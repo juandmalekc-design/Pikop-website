@@ -3,6 +3,7 @@ screenshot_cdp.py
 screenshot_fullpage.py
 screenshot_scroll.py
 screenshot_section.py
+compress-images.py
 serve.mjs
 CLAUDE.md
 .claude/

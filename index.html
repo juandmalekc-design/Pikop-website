@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pikop — Come bien. Paga poco.</title>
+  <link rel="preload" as="image" href="brand_assets/panama-staples.webp" type="image/webp">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <style>
@@ -147,7 +148,7 @@
     }
     .hero-bg {
       position: absolute; inset: 0;
-      background: url('brand_assets/panama-staples.png') center/cover no-repeat;
+      background: url('brand_assets/panama-staples.webp') center/cover no-repeat;
     }
     .hero-overlay {
       position: absolute; inset: 0;
@@ -396,7 +397,7 @@
     .features-bg-img {
       position: absolute;
       inset: 0;
-      background: url('brand_assets/international-variety.png') center/cover no-repeat;
+      background: url('brand_assets/international-variety.webp') center/cover no-repeat;
       opacity: 0.10;
       pointer-events: none;
     }
@@ -508,7 +509,7 @@
     .negocios-bg-img {
       position: absolute;
       inset: 0;
-      background: url('brand_assets/sushi-dark.png') center/cover no-repeat;
+      background: url('brand_assets/sushi-dark.webp') center/cover no-repeat;
       opacity: 0.14;
       pointer-events: none;
     }
@@ -1098,7 +1099,10 @@
 
     <!-- Right: image + pillars -->
     <div class="sobre-right">
-      <img class="sobre-img" src="brand_assets/pastries.png" alt="Comida fresca y deliciosa" loading="lazy" />
+      <picture>
+        <source srcset="brand_assets/pastries.webp" type="image/webp">
+        <img class="sobre-img" src="brand_assets/pastries.jpg" alt="Comida fresca y deliciosa" loading="lazy" />
+      </picture>
 
       <div class="pillar-card">
         <div>
