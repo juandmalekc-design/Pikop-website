@@ -155,6 +155,7 @@
     /* ─── HERO ───────────────────────────────────────── */
     .hero {
       min-height: 90vh;
+      min-height: 90svh;
       position: relative;
       display: flex;
       align-items: center;
@@ -291,6 +292,7 @@
     /* ─── WAVE DIVIDERS ──────────────────────────────── */
     .divider { display: block; width: 100%; overflow: hidden; line-height: 0; }
     .divider svg { display: block; width: 100%; }
+    .divider-to-negocios { background: #FFFFFF; }
 
     /* ─── SECTION COMMONS ────────────────────────────── */
     .section-label {
@@ -719,11 +721,13 @@
       .hero-knight-edge { display: none; }
       .sobre-inner { grid-template-columns: 1fr; gap: 2.5rem; }
       .cta-inner { grid-template-columns: 1fr; text-align: center; }
-      .cta-knight { width: 220px; margin: 0 auto; }
+      .cta-knight { width: min(58vw, 220px); margin: 0 auto 8px; }
       .cta-knight-wrap { margin: 0 auto; }
-      .cta-headline { text-align: center; }
+      .cta-headline { text-align: center; font-size: clamp(1.45rem, 6.5vw, 1.75rem); }
       .cta-sub { text-align: center; }
-      .teal-badge-lg { display: block; text-align: center; }
+      .teal-badge-lg { text-align: center; }
+      .store-badges-row { flex-direction: column; justify-content: center; }
+      .store-badges-row img { width: 220px; height: auto; }
       .cta-play-btn { margin: 0 auto; }
     }
     @media (max-width: 768px) {
@@ -736,7 +740,8 @@
       .negocios-grid { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
       .hero h1 { font-size: 48px; }
-      .hero-inner { padding: 60px 0; }
+      .hero-inner { padding: 60px 24px; }
+      .hero-sub { font-weight: 500; text-shadow: 0 1px 3px rgba(0,0,0,0.45); }
     }
     @media (max-width: 480px) {
       .footer-grid { grid-template-columns: 1fr; }
@@ -910,10 +915,9 @@
 </section>
 
 <!-- Divider: white → dark -->
-<span class="divider" aria-hidden="true">
+<span class="divider divider-to-negocios" aria-hidden="true">
   <svg viewBox="0 0 1440 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0,90 C480,0 960,0 1440,90 L1440,0 L0,0 Z" fill="#FFFFFF"/>
-    <path d="M0,90 C480,0 960,0 1440,90 L1440,90 L0,90 Z" fill="#141417"/>
+    <path d="M0,90 C480,0 960,0 1440,90 L1440,90 L0,90 Z" fill="#161618"/>
   </svg>
 </span>
 
