@@ -631,6 +631,7 @@
       color: #fff;
       margin-bottom: 1.5rem;
     }
+    .mobile-break { display: none; }
     .cta-sub {
       font-size: 1.2rem;
       color: rgba(255,255,255,0.9);
@@ -720,14 +721,15 @@
       .hero-buttons { justify-content: center; }
       .hero-knight-edge { display: none; }
       .sobre-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-      .cta-inner { grid-template-columns: 1fr; text-align: center; }
-      .cta-knight { width: min(58vw, 220px); margin: 0 auto 8px; }
+      .cta-inner { grid-template-columns: 1fr; text-align: center; gap: 1rem; }
+      .cta-knight { width: min(82vw, 340px); margin: 0 auto; }
       .cta-knight-wrap { margin: 0 auto; }
-      .cta-headline { text-align: center; font-size: clamp(1.45rem, 6.5vw, 1.75rem); }
-      .cta-sub { text-align: center; }
-      .teal-badge-lg { text-align: center; }
-      .store-badges-row { flex-direction: column; justify-content: center; }
-      .store-badges-row img { width: 220px; height: auto; }
+      .cta-headline { text-align: center; font-size: clamp(2.1rem, 9vw, 2.5rem); margin-bottom: 0.85rem; }
+      .mobile-break { display: block; }
+      .cta-sub { text-align: center; font-size: 1.3rem; margin-bottom: 1.1rem; }
+      .teal-badge-lg { display: none; }
+      .store-badges-row { justify-content: center; }
+      .store-badges-row img { height: 48px; width: auto; }
       .cta-play-btn { margin: 0 auto; }
     }
     @media (max-width: 768px) {
@@ -741,7 +743,8 @@
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
       .hero h1 { font-size: 48px; }
       .hero-inner { padding: 60px 24px; }
-      .hero-sub { font-weight: 500; text-shadow: 0 1px 3px rgba(0,0,0,0.45); }
+      .hero-sub { font-weight: 600; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
+      .divider-to-negocios { margin-bottom: -3px; }
     }
     @media (max-width: 480px) {
       .footer-grid { grid-template-columns: 1fr; }
@@ -1022,7 +1025,7 @@
 
     <!-- Right: Text -->
     <div class="cta-text">
-      <h2 class="cta-headline">Descarga <img class="word-logo" src="brand_assets/pikop_logo_white_crop.png" alt="Pikop" />.<br/>Come bien. Paga poco.</h2>
+      <h2 class="cta-headline">Descarga <img class="word-logo" src="brand_assets/pikop_logo_white_crop.png" alt="Pikop" />.<br/>Come bien. <br class="mobile-break"/>Paga poco.</h2>
       <p class="cta-sub">Cajas desde B/.2.50. Retiro en restaurante.</p>
       <div>
         <span class="teal-badge-lg">Hasta -70% off</span>
