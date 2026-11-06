@@ -264,8 +264,8 @@
       position: absolute;
       right: 0;
       bottom: 0;
-      width: 380px;
-      height: 380px;
+      width: 560px;
+      height: 560px;
       overflow: hidden;
       pointer-events: none;
       z-index: 2;
@@ -280,9 +280,9 @@
     }
     .hero-knight-img {
       position: absolute;
-      bottom: -10px;
-      right: -10px;
-      width: 230px;
+      bottom: 24px;
+      right: 8px;
+      width: 220px;
       height: auto;
       z-index: 2;
       display: block;
@@ -321,11 +321,18 @@
       max-width: 540px;
       margin: 0 auto 3rem;
     }
+    .word-logo {
+      display: inline-block;
+      height: 1.15em;
+      width: auto;
+      vertical-align: baseline;
+      transform: translateY(0.27em);
+    }
 
     /* ─── CÓMO FUNCIONA ──────────────────────────────── */
     .como-funciona {
       background: var(--cream);
-      padding: 90px 24px 80px;
+      padding: 56px 24px 80px;
     }
     .steps-grid {
       max-width: 1100px;
@@ -390,8 +397,8 @@
       pointer-events: none;
     }
     .features-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
-    .features .section-label { color: var(--orange); }
-    .features .section-title { color: #fff; }
+    .features .section-label { color: var(--orange); font-size: 0.85rem; }
+    .features .section-title { color: #fff; font-size: clamp(2.3rem, 4.5vw, 3rem); }
     .features-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -411,11 +418,12 @@
     /* ─── PRECIOS ─────────────────────────────────────── */
     .precios {
       background: #fff;
-      padding: 90px 24px 80px;
+      padding: 8px 24px 80px;
     }
     .precios-inner { max-width: 900px; margin: 0 auto; }
-    .precios .section-label { color: var(--teal); }
-    .precios .section-title { color: var(--dark); }
+    .precios .section-label { color: var(--teal); font-size: 0.85rem; }
+    .precios .section-title { color: var(--dark); font-size: clamp(2.3rem, 4.5vw, 3rem); }
+    .precios .section-sub { font-size: 1.15rem; max-width: 620px; }
     .price-cards {
       display: flex;
       align-items: center;
@@ -525,14 +533,11 @@
     .biz-title { font-family: var(--font-head); font-weight: 800; font-size: 1.2rem; color: #fff; margin-bottom: 0.4rem; }
     .biz-body { font-size: 1rem; line-height: 1.65; color: rgba(255,255,255,0.6); }
     .biz-cta-box {
-      background: rgba(240,96,0,0.08);
-      border: 1.5px solid rgba(240,96,0,0.3);
-      border-radius: 20px;
-      padding: 2.5rem 2rem;
       text-align: center;
+      padding: 1rem 0 0;
     }
-    .biz-cta-title { font-family: var(--font-head); font-weight: 900; font-size: 1.5rem; color: #fff; margin-bottom: 0.75rem; }
-    .biz-cta-sub { font-size: 0.95rem; line-height: 1.7; color: rgba(255,255,255,0.6); max-width: 440px; margin: 0 auto 1.75rem; }
+    .biz-cta-title { font-family: var(--font-head); font-weight: 900; font-size: 2.1rem; color: #fff; margin-bottom: 1rem; letter-spacing: -0.02em; }
+    .biz-cta-sub { font-size: 1.2rem; line-height: 1.6; color: rgba(255,255,255,0.75); max-width: 560px; margin: 0 auto 1.75rem; }
     .biz-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
     .store-btn-dark {
       display: inline-flex;
@@ -553,7 +558,7 @@
     /* ─── SOBRE NOSOTROS ─────────────────────────────── */
     .sobre {
       background: var(--cream);
-      padding: 90px 24px 80px;
+      padding: 80px 24px 80px;
     }
     .sobre-inner {
       max-width: 1100px;
@@ -592,59 +597,40 @@
     /* ─── FINAL CTA ──────────────────────────────────── */
     .final-cta {
       background: #ed5300;
-      min-height: 500px;
       position: relative;
       overflow: hidden;
-      padding: 80px 24px 100px;
+      padding: 56px 24px 64px;
     }
-
-    /* Decorative food illustrations — right two-thirds only, corners */
-    .deco {
-      position: absolute;
-      opacity: 0.2;
-      color: #FFF0DC;
-      pointer-events: none;
-    }
-    /* Top-right corner cluster */
-    .deco-mango      { top: -20px;   right: 20px;   width: 110px; }
-    .deco-leaf-tr    { top: 10px;    right: 145px;  width: 85px; }
-    .deco-leaf-l     { top: -5px;    right: 245px;  width: 80px; }
-    .deco-pineapple  { top: -25px;   right: 340px;  width: 110px; }
-    .deco-burger     { top: 20px;    right: 460px;  width: 65px; }
-    /* Bottom-right corner cluster */
-    .deco-leaf-r     { bottom: 20px; right: 15px;   width: 80px; }
-    .deco-pineapple2 { bottom: -20px; right: 110px; width: 95px; }
-    .deco-citrus     { bottom: -10px; right: 220px; width: 100px; }
-    .deco-leaf-bl    { bottom: 30px; right: 345px;  width: 70px; }
 
     .cta-inner {
-      max-width: 1100px;
+      max-width: 1150px;
       margin: 0 auto;
       position: relative;
       z-index: 2;
       display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 4rem;
+      grid-template-columns: auto auto;
+      justify-content: center;
+      gap: 3rem;
       align-items: center;
     }
     .cta-knight-wrap { position: relative; display: inline-block; }
     .cta-knight {
-      width: 340px;
+      width: 440px;
       position: relative;
       z-index: 1;
     }
     .cta-text {}
     .cta-headline {
       font-family: var(--font-head);
-      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-size: clamp(2.1rem, 3.7vw, 3.15rem);
       font-weight: 900;
       letter-spacing: -0.03em;
-      line-height: 1.05;
+      line-height: 1.1;
       color: #fff;
-      margin-bottom: 0.75rem;
+      margin-bottom: 1.5rem;
     }
     .cta-sub {
-      font-size: 1.05rem;
+      font-size: 1.2rem;
       color: rgba(255,255,255,0.9);
       margin-bottom: 1.75rem;
       line-height: 1.6;
@@ -655,12 +641,14 @@
       color: #fff;
       font-family: var(--font-head);
       font-weight: 900;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       border-radius: 999px;
-      padding: 12px 28px;
+      padding: 12px 26px;
       margin-bottom: 1.75rem;
       letter-spacing: 0.02em;
     }
+    .store-badges-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+    .store-badges-row img { height: 68px; width: auto; display: block; }
     .cta-play-btn {
       display: inline-flex;
       align-items: center;
@@ -814,16 +802,9 @@
   <!-- Knight corner accent — bottom-right -->
   <div class="hero-knight-edge" aria-hidden="true">
     <div class="hero-knight-gradient"></div>
-    <img class="hero-knight-img" src="brand_assets/knightlogo_test.png" alt="" />
+    <img class="hero-knight-img" src="brand_assets/halfknight_and_logo_white.png" alt="" />
   </div>
 </section>
-
-<!-- Divider: dark → cream -->
-<span class="divider" aria-hidden="true">
-  <svg viewBox="0 0 1440 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0,0 C360,90 1080,90 1440,0 L1440,90 L0,90 Z" fill="#FFF8F0"/>
-  </svg>
-</span>
 
 <!-- ════════════════════ CÓMO FUNCIONA ═════════════════ -->
 <section id="como-funciona" class="como-funciona">
@@ -856,7 +837,7 @@
   <div class="features-bg-img" aria-hidden="true"></div>
   <div class="features-inner">
     <span class="section-label">Todo en una app</span>
-    <h2 class="section-title">Por qué elegir Pikop</h2>
+    <h2 class="section-title">Por qué elegir <img class="word-logo" src="brand_assets/pikop_logo_white_crop.png" alt="Pikop" /></h2>
     <p class="section-sub" style="color:rgba(255,255,255,0.55);">&nbsp;</p>
 
     <div class="features-grid">
@@ -978,17 +959,10 @@
 
     <div class="biz-cta-box">
       <h3 class="biz-cta-title">¿Tu negocio quiere sumarse?</h3>
-      <p class="biz-cta-sub">Registra tu restaurante directamente desde la app. El proceso toma menos de 5 minutos y empiezas a vender ese mismo día.</p>
+      <p class="biz-cta-sub">Registra tu restaurante directamente desde la app. El proceso toma menos de 5 minutos.</p>
     </div>
   </div>
 </section>
-
-<!-- Divider: dark → cream -->
-<span class="divider" aria-hidden="true">
-  <svg viewBox="0 0 1440 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0,0 C360,90 1080,90 1440,0 L1440,90 L0,90 Z" fill="#FFF8F0"/>
-  </svg>
-</span>
 
 <!-- ══════════════════ SOBRE NOSOTROS ═══════════════════ -->
 <section id="sobre-nosotros" class="sobre">
@@ -1039,15 +1013,19 @@
   <div class="cta-inner">
     <!-- Left: Knight -->
     <div class="cta-knight-wrap">
-      <img class="cta-knight" src="brand_assets/knight_logo.png" alt="El Caballero Pikop" loading="lazy" />
+      <img class="cta-knight" src="brand_assets/halfknight_white.png" alt="El Caballero Pikop" loading="lazy" />
     </div>
 
     <!-- Right: Text -->
     <div class="cta-text">
-      <h2 class="cta-headline">Descarga Pikop.<br/>Come bien. Paga poco.</h2>
+      <h2 class="cta-headline">Descarga <img class="word-logo" src="brand_assets/pikop_logo_white_crop.png" alt="Pikop" />.<br/>Come bien. Paga poco.</h2>
       <p class="cta-sub">Cajas desde B/.2.50. Retiro en restaurante.</p>
-      <div style="margin-bottom:1.75rem;">
+      <div>
         <span class="teal-badge-lg">Hasta -70% off</span>
+      </div>
+      <div class="store-badges-row">
+        <img src="brand_assets/appstore_black.svg" alt="Descarga en App Store" />
+        <img src="brand_assets/GetItOnGooglePlay_Badge_Web_color_Spanish.png" alt="Descarga en Google Play" />
       </div>
     </div>
   </div>
