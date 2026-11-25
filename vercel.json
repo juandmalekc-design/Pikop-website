@@ -1,4 +1,9 @@
 {
+  "rewrites": [
+    { "source": "/terminos", "destination": "/terminos-clientes-1.0.html" },
+    { "source": "/terminos-comercios", "destination": "/terminos-comercios-1.0.html" },
+    { "source": "/privacidad", "destination": "/privacidad-1.0.html" }
+  ],
   "headers": [
     {
       "source": "/brand_assets/(.*)",

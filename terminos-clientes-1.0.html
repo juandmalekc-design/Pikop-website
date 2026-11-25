@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Términos y Condiciones — Clientes | Pikop</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── TOKENS (matches index.html) ───────────────── */
+    :root {
+      --orange:      #F06000;
+      --orange-dk:   #C84E00;
+      --orange-lt:   rgba(240,96,0,0.12);
+      --teal:        #00B4B4;
+      --dark:        #1A1A1A;
+      --cream:       #FFF8F0;
+      --cream-lt:    #F5EFE6;
+      --white:       #FFFFFF;
+      --body:        #555555;
+      --font-head:   'Plus Jakarta Sans', sans-serif;
+      --font-body:   'Inter', sans-serif;
+    }
+
+    /* ─── RESET ──────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--white); color: var(--dark); overflow-x: hidden; }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ─── NAV (copied from index.html) ──────────────── */
+    #navbar {
+      position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-index: 100;
+      background: rgba(255,255,255,0.97);
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.08);
+      box-shadow: 0 2px 24px rgba(0,0,0,0.10);
+      transition: box-shadow 0.25s ease, backdrop-filter 0.25s ease;
+      white-space: nowrap;
+    }
+    #navbar.scrolled {
+      box-shadow: 0 4px 32px rgba(0,0,0,0.14);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: rgba(255,255,255,0.88);
+    }
+    .nav-inner {
+      padding: 0 20px 0 8px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #eb5d00;
+      border-radius: 999px;
+      padding: 6px 14px;
+    }
+    .nav-logo img { height: 34px; width: auto; object-fit: contain; display: block; }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: var(--font-head);
+      font-weight: 600;
+      font-size: 0.92rem;
+      color: var(--dark);
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--orange); }
+    .nav-links a:focus-visible { outline: 2px solid var(--orange); border-radius: 4px; }
+    .nav-cta {
+      font-family: var(--font-head);
+      font-weight: 600;
+      font-size: 0.92rem;
+      background: none;
+      color: var(--dark);
+      padding: 0;
+      border-radius: 0;
+      box-shadow: none;
+      transition: color 0.15s;
+    }
+    #navbar .nav-cta:hover { background: none; color: var(--orange); transform: none; }
+    #navbar .nav-cta:active { transform: none; }
+    #navbar .nav-cta:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; border-radius: 4px; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--dark);
+      border-radius: 2px;
+      transition: transform 0.25s, opacity 0.25s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 68px; left: 0; right: 0;
+      background: #fff;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      padding: 1.5rem 1.5rem 2rem;
+      flex-direction: column;
+      gap: 1.25rem;
+      z-index: 99;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--dark);
+    }
+    .mobile-nav .nav-cta { text-align: center; }
+
+    /* ─── LEGAL DOCUMENT LAYOUT ──────────────────────── */
+    .legal-main {
+      padding: 140px 24px 100px;
+    }
+    .legal-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .legal-doc h1 {
+      font-family: var(--font-head);
+      font-size: clamp(28px, 5vw, 38px);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      color: var(--dark);
+      margin-bottom: 0.6rem;
+    }
+    .legal-doc .legal-meta {
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      color: var(--body);
+      padding-bottom: 1.75rem;
+      margin-bottom: 1.75rem;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+    .legal-doc h2 {
+      font-family: var(--font-head);
+      font-size: clamp(19px, 2.6vw, 22px);
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+      color: var(--dark);
+      margin-top: 2.5rem;
+      margin-bottom: 0.9rem;
+    }
+    .legal-doc h3 {
+      font-family: var(--font-head);
+      font-size: clamp(16px, 2.2vw, 18px);
+      font-weight: 700;
+      line-height: 1.4;
+      color: var(--dark);
+      margin-top: 1.75rem;
+      margin-bottom: 0.6rem;
+    }
+    .legal-doc p {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--body);
+      margin-bottom: 1.1rem;
+    }
+    .legal-doc ul {
+      margin-bottom: 1.1rem;
+      padding-left: 1.4rem;
+    }
+    .legal-doc li {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--body);
+      margin-bottom: 0.5rem;
+    }
+    .legal-doc strong { color: var(--dark); font-weight: 700; }
+    .legal-doc .table-scroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 1.5rem 0 2rem;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 8px;
+    }
+    .legal-doc table {
+      width: 100%;
+      min-width: 420px;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+    }
+    .legal-doc th {
+      background: var(--cream-lt);
+      text-align: left;
+      padding: 0.75rem 1rem;
+      font-family: var(--font-head);
+      font-weight: 700;
+      color: var(--dark);
+      border-bottom: 2px solid rgba(0,0,0,0.08);
+    }
+    .legal-doc td {
+      padding: 0.65rem 1rem;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      color: var(--body);
+    }
+    .legal-doc tr:last-child td { border-bottom: none; }
+
+    /* ─── FOOTER (copied from index.html) ───────────── */
+    footer {
+      background: var(--dark);
+      border-top: 2px solid var(--orange);
+      padding: 3.5rem 24px 1.5rem;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 2.5rem;
+    }
+    .footer-logo { height: 58px; width: auto; object-fit: contain; display: block; margin-bottom: 0.75rem; }
+    .footer-tagline { font-size: 0.88rem; line-height: 1.7; color: rgba(255,255,255,0.45); max-width: 200px; }
+    .footer-col-title {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 1rem;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-col a {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.55);
+      transition: color 0.15s;
+    }
+    .footer-col a:hover { color: #fff; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding-top: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-copy { font-size: 0.82rem; color: rgba(255,255,255,0.25); }
+
+    /* ─── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 768px) {
+      #navbar { top: 0; left: 0; right: 0; transform: none; border-radius: 0; border-left: none; border-right: none; border-top: none; border-bottom: 1px solid rgba(0,0,0,0.07); box-shadow: none; }
+      .nav-inner { padding: 0 24px; justify-content: space-between; height: 64px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .legal-main { padding: 100px 20px 72px; }
+      .legal-doc .legal-meta { margin-bottom: 1.5rem; padding-bottom: 1.25rem; }
+    }
+    @media (max-width: 480px) {
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─── PRINT ──────────────────────────────────────── */
+    @media print {
+      #navbar, .mobile-nav, footer { display: none !important; }
+      .legal-main { padding: 0; }
+      .legal-container { max-width: 100%; }
+      body { background: #fff; }
+      .legal-doc .table-scroll { overflow-x: visible; border: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header id="navbar">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo" aria-label="Pikop inicio">
+      <img src="brand_assets/pikop_logo_no_bg.png" alt="Pikop" />
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="/#como-funciona">Cómo funciona</a></li>
+      <li><a href="/#para-negocios">Para negocios</a></li>
+      <li><a href="/#sobre-nosotros">Sobre nosotros</a></li>
+    </ul>
+    <a href="/#download" class="nav-cta">Descargar App</a>
+    <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<nav class="mobile-nav" id="mobile-nav" aria-label="Menú móvil">
+  <a href="/#como-funciona">Cómo funciona</a>
+  <a href="/#para-negocios">Para negocios</a>
+  <a href="/#sobre-nosotros">Sobre nosotros</a>
+  <a href="/#download" class="nav-cta">Descargar App</a>
+</nav>
+
+<main class="legal-main">
+  <div class="legal-container">
+<article class="legal-doc" data-doc="terminos-clientes-1.0" data-version="1.0">
+<h1>Términos y Condiciones de Uso para Clientes</h1>
+<p class="legal-meta">Versión 1.0 · Última actualización: 24 de noviembre de 2026</p>
+<p>Los presentes Términos y Condiciones (en adelante, los &quot;Términos&quot;) de Pikop, S.E.P. (en adelante, &quot;Pikop&quot;, &quot;nosotros&quot;) regulan el acceso y uso de la aplicación móvil Pikop y del sitio web pikop.app por parte de las personas que adquieren Cajas a través de la plataforma (en adelante, el &quot;Cliente&quot; o &quot;usted&quot;). Estos Términos, junto con la Política de Privacidad, constituyen la totalidad del acuerdo entre Pikop y el Cliente, y sustituyen cualquier comunicación o acuerdo anterior, verbal o escrito, sobre la misma materia.</p>
+<p>Al crear una cuenta o utilizar la Aplicación, usted acepta quedar vinculado por estos Términos. Si no está de acuerdo con ellos, no podrá acceder ni utilizar la Aplicación.</p>
+<p><strong>Nuestra misi</strong><strong>ó</strong><strong>n. </strong>La misión de Pikop es reducir el desperdicio de alimentos en Panamá, aprovechando el excedente de comercios minoristas y de servicios alimentarios, como supermercados, panaderías, comedores, restaurantes, fabricantes y otros negocios de alimentos que cuentan con excedente al final de su operación regular (cada uno, un &quot;Comercio&quot;). A través de la Aplicación, el Comercio indica la cantidad de Cajas que llenará con su excedente y las pone a disposición del Cliente para su compra, ofrecidas a una fracción de su precio original.</p>
+<h2>PRIMERO: DEFINICIONES</h2>
+<p><strong>1.1. </strong>Para efectos de estos Términos, los siguientes términos tendrán las siguientes definiciones:</p>
+<ul>
+<li><strong>Aplicaci</strong><strong>ó</strong><strong>n: </strong>la aplicación móvil Pikop, para cualquiera de las tecnologías disponibles.</li>
+<li><strong>Caja: </strong>paquete de comida excedente o próxima a vencer, ofrecida por un Comercio a través de la Aplicación a un precio reducido respecto de su valor original, cuyo contenido exacto es determinado por el Comercio y no es conocido por el Cliente al momento de la compra.</li>
+<li><strong>Caja Gratis: </strong>beneficio promocional mediante el cual Pikop cubre, por cuenta propia, el costo total de una Caja específica a favor del Cliente, conforme a las condiciones que Pikop establezca para cada promoción. Es un beneficio distinto de los Créditos Promocionales.</li>
+<li><strong>Cliente: </strong>usted, la persona natural que adquiere Cajas a través de la Aplicación.</li>
+<li><strong>Comercio: </strong>el establecimiento afiliado que publica y vende Cajas a través de la Aplicación.</li>
+<li><strong>Cr</strong><strong>é</strong><strong>ditos Promocionales: </strong>saldo virtual otorgado por Pikop como parte de campañas o promociones, canjeable únicamente dentro de la Aplicación.</li>
+<li><strong>Orden: </strong>la compra de una o más Cajas realizada por el Cliente a través de la Aplicación.</li>
+<li><strong>Portal: </strong>la Aplicación y el sitio web pikop.app, como plataforma tecnológica en su conjunto.</li>
+<li><strong>Ventana de Retiro (&quot;Pickup&quot;): </strong>el período de tiempo, indicado en cada Caja, dentro del cual el Cliente debe retirar su Orden en el establecimiento del Comercio.</li>
+</ul>
+<h2>SEGUNDO: OBJETO Y NATURALEZA DEL SERVICIO</h2>
+<p><strong>2.1. </strong>Pikop pone a disposición del Cliente una plataforma tecnológica de marketplace que le permite descubrir, reservar y pagar Cajas de comida excedente ofrecidas por Comercios afiliados, para su retiro directo en el establecimiento del Comercio.</p>
+<p><strong>2.2. </strong>EL SERVICIO DE PIKOP ES EXCLUSIVAMENTE DE INTERMEDIACIÓN TECNOLÓGICA. Pikop no es productor, proveedor, fabricante, expendedor, distribuidor ni comercializador de los productos contenidos en las Cajas. Pikop no fabrica, vende, compra, almacena, prepara, produce, procesa, etiqueta, empaca, entrega ni manipula en forma alguna el contenido de las Cajas. La venta de los productos se perfecciona exclusivamente entre el Cliente y el Comercio; Pikop no es parte de dicha compraventa.</p>
+<p><strong>2.3. </strong>Pikop opera exclusivamente bajo la modalidad de retiro en el establecimiento (&quot;Pickup&quot;). Pikop no ofrece, gestiona ni coordina servicio de reparto, entrega a domicilio o logística de ninguna naturaleza.</p>
+<p><strong>2.4. </strong>El Portal se pone a disposición del Cliente para su uso personal y no comercial.</p>
+<h2>TERCERO: REGISTRO Y CUENTA DE USUARIO</h2>
+<p><strong>3.1. </strong>Para adquirir Cajas, el Cliente deberá registrarse y crear una cuenta en la Aplicación, proporcionando la información que Pikop requiera, incluyendo nombre y apellido, correo electrónico y número de teléfono.</p>
+<p><strong>3.2. </strong>El registro está permitido únicamente a personas naturales mayores de 18 (dieciocho) años, con capacidad legal para contratar. Al registrarse, el Cliente declara cumplir con este requisito.</p>
+<p><strong>3.3. </strong>El Cliente solo podrá mantener una (1) cuenta activa. El Cliente se compromete a mantener la información de su cuenta completa, exacta y actualizada. No hacerlo puede impedir que Pikop le preste adecuadamente el servicio.</p>
+<p><strong>3.4. </strong>El Cliente nunca deberá:</p>
+<ul>
+<li>Utilizar el nombre de otra persona con la intención de hacerse pasar por ella.</li>
+<li>Utilizar como nombre un término ofensivo, vulgar u obsceno, o sujeto a derechos de un tercero sin autorización.</li>
+<li>Utilizar la cuenta o la información de registro de otra persona.</li>
+<li>Compartir su cuenta con terceros, ni ceder o transferir su cuenta a otra persona o entidad.</li>
+<li>Publicar, distribuir o anunciar la información de acceso de su cuenta o la de otra persona.</li>
+<li>Crear o intentar crear una nueva cuenta después de que Pikop haya suspendido o cancelado una cuenta suya.</li>
+</ul>
+<p><strong>3.5. </strong>El Cliente es el único responsable de mantener la confidencialidad y seguridad de sus credenciales de acceso, y de toda la actividad que ocurra en su cuenta. El Cliente deberá notificar de inmediato a Pikop, al correo contacto@pikop.app, si sospecha que sus credenciales se perdieron, fueron robadas, o que su cuenta ha sido comprometida o utilizada sin su autorización.</p>
+<p><strong>3.6. </strong>El Cliente podrá eliminar su cuenta en cualquier momento desde la propia Aplicación. La eliminación podrá posponerse mientras existan Órdenes activas, solicitudes de reembolso sin resolver, o saldos pendientes entre el Cliente y Pikop, conforme se describe en la Política de Privacidad.</p>
+<p><strong>3.7. </strong>Al registrarse, el Cliente declara que no se encuentra ubicado en un país sujeto a sanciones económicas o comerciales, ni figura en ninguna lista de personas o entidades sancionadas, restringidas o bloqueadas por autoridades competentes.</p>
+<h2>CUARTO: LICENCIA DE USO Y RESTRICCIONES</h2>
+<p><strong>4.1. </strong>Sujeto al cumplimiento de estos Términos, Pikop otorga al Cliente una licencia limitada, no exclusiva, no sublicenciable, revocable e intransferible para acceder y utilizar la Aplicación en su dispositivo personal, únicamente para uso personal y no comercial. Pikop se reserva todos los derechos no otorgados expresamente.</p>
+<p><strong>4.2. </strong>El Cliente no podrá, directa o indirectamente:</p>
+<ul>
+<li>Utilizar el Portal para cualquier fin ilícito o prohibido por estos Términos.</li>
+<li>Descifrar, descompilar, desensamblar, realizar ingeniería inversa, o intentar obtener el código fuente, ideas subyacentes o algoritmos de cualquier parte del Portal, salvo en la medida en que la ley aplicable lo permita expresamente.</li>
+<li>Modificar, traducir, o crear obras derivadas de cualquier parte del Portal.</li>
+<li>Copiar, alquilar, arrendar, distribuir, revender, transferir, exhibir públicamente o explotar de cualquier otra forma el Portal o los derechos otorgados en estos Términos.</li>
+<li>Utilizar sistemas automatizados, robots, arañas, scripts o cualquier software para extraer, rastrear o &quot;raspar&quot; (scraping) datos o contenido del Portal.</li>
+<li>Realizar cualquier acción que imponga una carga irrazonable o desproporcionada sobre la infraestructura de Pikop o la de sus proveedores.</li>
+<li>Ejecutar cualquier forma de auto-respuesta automatizada o envío masivo no solicitado (&quot;spam&quot;) a través del Portal.</li>
+<li>Interferir, o intentar interferir, con el correcto funcionamiento del Portal, o eludir cualquier medida de seguridad o restricción de acceso.</li>
+<li>Cargar, publicar o distribuir contenido que el Cliente sepa que es falso, engañoso o inexacto; que contenga virus o cualquier código diseñado para dañar, limitar o interferir con software, hardware o equipos; que suplante la identidad de cualquier persona o entidad; o que incluya documentos de identificación o información financiera confidencial de terceros.</li>
+<li>Acceder o utilizar el Portal si es un competidor directo de Pikop, o agente de un competidor directo, salvo con el consentimiento previo y por escrito de Pikop.</li>
+<li>Acceder al Portal con fines de evaluación comparativa (benchmarking), monitoreo de disponibilidad o rendimiento, o cualquier otro fin competitivo.</li>
+<li>Utilizar la Aplicación con el único propósito de consultar los precios de los Comercios sin intención de realizar una compra.</li>
+<li>Retirar u ocultar cualquier aviso de derechos de autor, marca registrada u otra nota de propiedad contenida en el Portal.</li>
+</ul>
+<h2>QUINTO: FUNCIONAMIENTO DEL SERVICIO</h2>
+<p><strong>5.1. </strong>El uso de la Aplicación sigue los siguientes pasos:</p>
+<ul>
+<li>El Comercio publica en la Aplicación una cantidad determinada de Cajas, indicando su precio, la Ventana de Retiro y, cuando aplique, etiquetas dietéticas.</li>
+<li>El Cliente visualiza los Comercios afiliados disponibles y selecciona la Caja de su preferencia.</li>
+<li>El Cliente paga su Orden a través de la Aplicación.</li>
+<li>El Cliente recibe una confirmación con un código numérico de 4 (cuatro) dígitos.</li>
+<li>El Cliente acude al establecimiento del Comercio dentro de la Ventana de Retiro y presenta dicho código para recibir su Caja.</li>
+</ul>
+<p><strong>5.2. </strong>La Aplicación solicita el permiso de ubicación del dispositivo únicamente para calcular, en el momento de uso, qué Comercios afiliados se encuentran cerca del Cliente. El Cliente puede revocar este permiso en cualquier momento desde la configuración de su dispositivo; en tal caso, la funcionalidad de la Aplicación podrá verse limitada. Pikop no almacena la ubicación geográfica del Cliente, conforme se detalla en la Política de Privacidad.</p>
+<p><strong>5.3. </strong>La disponibilidad de Cajas depende exclusivamente del excedente real de cada Comercio en un día determinado. Pikop no garantiza la disponibilidad de Cajas en ningún Comercio, momento o ubicación.</p>
+<h2>SEXTO: CONTENIDO DE LAS CAJAS, ALÉRGENOS Y SEGURIDAD ALIMENTARIA</h2>
+<p><strong>6.1. </strong>Naturaleza de las Cajas. El Cliente reconoce y acepta que las Cajas contienen comida excedente o próxima a vencer, ofrecida a precio reducido precisamente en razón de dicha condición, y que su contenido exacto constituye una sorpresa que puede variar de un día a otro.</p>
+<p><strong>6.2. </strong>Rol de Pikop. PIKOP NO TIENE CONOCIMIENTO NI CONTROL DEL CONTENIDO DE LAS CAJAS. Pikop no posee, controla, manipula, ofrece ni gestiona el contenido de las Cajas puestas a disposición por los Comercios. Pikop no asume responsabilidad alguna por el contenido de las Cajas, incluyendo su calidad, ingredientes, alérgenos, frescura, cantidad, temperatura o condiciones de conservación, ni por la exactitud de la información proporcionada por el Comercio en la Aplicación.</p>
+<p><strong>6.3. </strong>Rol del Comercio. El Comercio es el único y exclusivo responsable de la calidad, inocuidad, composición, higiene y seguridad alimentaria de los productos contenidos en la Caja, así como de contar con todos los permisos sanitarios y licencias exigidos por las autoridades competentes. El Comercio es también el único responsable de proporcionar al Cliente, al momento del retiro, la información sobre ingredientes, alérgenos, etiquetado, y las condiciones e instrucciones de conservación y consumo del contenido.</p>
+<p><strong>6.4. </strong>Etiquetas dietéticas. Cuando un Comercio asigne a una Caja una o más etiquetas dietéticas (por ejemplo, &quot;sin gluten&quot;, &quot;vegano&quot;, &quot;vegetariano&quot;, &quot;sin lácteos&quot;), dicha asignación constituye una declaración del Comercio, de cuya exactitud el Comercio es el único responsable. Las etiquetas indican la categoría general del producto y no garantizan el contenido específico de la Caja en un día determinado. La ausencia de una etiqueta no implica la ausencia del alérgeno o ingrediente correspondiente.</p>
+<p><strong>6.5. </strong>Alergias. SI EL CLIENTE PADECE ALGUNA ALERGIA, INTOLERANCIA O RESTRICCIÓN ALIMENTARIA, ES SU RESPONSABILIDAD CONFIRMAR DIRECTAMENTE CON EL COMERCIO, ANTES DE CONSUMIR EL CONTENIDO DE LA CAJA, LA PRESENCIA O AUSENCIA DE LOS ALÉRGENOS O INGREDIENTES QUE LE AFECTEN. Pikop no será responsable, bajo ninguna circunstancia, por reacciones adversas de cualquier naturaleza derivadas del consumo del contenido de una Caja.</p>
+<p><strong>6.6. </strong>Conservación y consumo. Dada la naturaleza de los productos, se recomienda al Cliente consumir el contenido de la Caja de forma inmediata o a la mayor brevedad posible después del retiro, y en todo caso conforme a las indicaciones que proporcione el Comercio. Pikop no asumirá responsabilidad alguna por consecuencias derivadas del consumo del contenido en forma contraria a dichas indicaciones, o transcurrido un tiempo prolongado desde el retiro.</p>
+<p><strong>6.7. </strong>Alertas de seguridad alimentaria. En caso de un retiro de producto (&quot;recall&quot;), alerta sanitaria, o cualquier otro riesgo relacionado con productos ofrecidos a través del Portal, Pikop podrá cancelar las Órdenes pendientes relacionadas, notificar a los Clientes afectados, y reembolsar los montos correspondientes.</p>
+<p><strong>6.8. </strong>No se ofrecen bebidas alcohólicas a través del Portal, bajo ninguna circunstancia.</p>
+<p><strong>6.9. </strong>Las fotografías, imágenes o gráficos que un Comercio publique para ilustrar una Caja tienen un propósito exclusivamente referencial, y buscan darle al Cliente una idea general del tipo de producto o del establecimiento. Dado que el contenido exacto de cada Caja se compone del excedente disponible al momento de su preparación, el Cliente reconoce y acepta que el contenido real entregado puede no coincidir exactamente con las fotografías publicadas, en cuanto a apariencia, presentación, cantidad o variedad. La exactitud y actualización de las fotografías publicadas es responsabilidad exclusiva del Comercio; Pikop no verifica dicho contenido y no será responsable si el Cliente considera que la Caja recibida no corresponde visualmente a la fotografía publicada.</p>
+<h2>SÉPTIMO: PRECIO, PAGO Y FACTURACIÓN</h2>
+<p><strong>7.1. </strong>Precio. El precio de cada Caja es determinado libre y exclusivamente por el Comercio, y se muestra en la Aplicación en Balboas (B/.) o Dólares de los Estados Unidos de América. El valor original que se exhiba como referencia corresponde a una estimación declarada por el Comercio del valor que tendrían los productos si no fueran vendidos como excedente, y tiene carácter meramente informativo.</p>
+<p><strong>7.2. </strong>Impuestos. El precio mostrado en la Aplicación es el monto final que pagará el Cliente, e incluye el Impuesto de Transferencia de Bienes Muebles y Servicios (ITBMS) cuando el Comercio sea contribuyente de dicho impuesto. Pikop no cobra al Cliente cargo alguno por el uso de la Aplicación.</p>
+<p><strong>7.3. </strong>Mandato de cobro. El Cliente reconoce y acepta que Pikop recibe el pago de la Orden en nombre y por cuenta del Comercio, en calidad de mandatario para el cobro. El pago realizado por el Cliente a Pikop conforme a este mandato lo libera completamente de su obligación de pago frente al Comercio.</p>
+<p><strong>7.4. </strong>Medio de pago. El medio de pago disponible en la Aplicación es Yappy (Banco General). El Cliente autoriza la transacción directamente dentro de la aplicación de Yappy. Pikop no tiene acceso a las credenciales bancarias del Cliente, ni a su cuenta de Yappy, y únicamente conserva en sus registros la referencia de la operación como constancia de la transacción. Una vez confirmada por el proveedor, la transacción es final e irreversible, sin perjuicio del derecho del Cliente a solicitar un reembolso conforme a la cláusula Novena.</p>
+<p><strong>7.5. </strong>Pikop podrá incorporar en el futuro otros medios de pago, en cuyo caso las condiciones aplicables serán informadas al Cliente dentro de la Aplicación.</p>
+<p><strong>7.6. </strong>Comprobantes y facturación. Por cada Orden, Pikop enviará al Cliente, por correo electrónico, un comprobante de pago. En caso de un reembolso aprobado, Pikop enviará igualmente un comprobante de reembolso. Ambos son documentos no fiscales: dejan constancia de la operación procesada por Pikop en su calidad de mandatario para el cobro, pero no constituyen ni sustituyen la factura fiscal de la venta. La factura fiscal correspondiente a la venta de los productos, así como la nota de crédito que proceda en caso de reembolso, debe ser emitida por el Comercio en su calidad de vendedor, conforme a la normativa de la Dirección General de Ingresos (DGI). Cada comprobante identifica al Comercio con su razón social, RUC y dígito verificador, de modo que el Cliente pueda solicitárselas directamente.</p>
+<p><strong>7.7. </strong>Bloqueo o rechazo de un pago. Pikop podrá rechazar procesar un pago, bloquear el acceso del Cliente, o cancelar su cuenta, cuando tenga motivos razonables para creer que existe un riesgo asociado al Cliente o a la transacción, incluyendo un posible incumplimiento de una ley o normativa aplicable, o un indicio de fraude.</p>
+<p><strong>7.8. </strong>Propinas. La Aplicación no cuenta con ningún mecanismo para dar propina o gratificación al Comercio, y el precio pagado por el Cliente conforme a esta cláusula compensa en su totalidad al Comercio por la Caja. Si el Cliente decide, por su propia voluntad y al momento del retiro, entregar una propina en efectivo o por cualquier otro medio directo al Comercio, dicha propina constituye un acto personal y voluntario entre el Cliente y el Comercio, completamente ajeno a la Aplicación. Pikop no interviene, no intermedia, no procesa ni asume responsabilidad alguna respecto de dicha propina.</p>
+<h2>OCTAVO: RETIRO DE LA ORDEN</h2>
+<p><strong>8.1. </strong>El Cliente deberá retirar su Orden en el establecimiento del Comercio, dentro de la Ventana de Retiro indicada en la Aplicación al momento de la compra.</p>
+<p><strong>8.2. </strong>Al momento del retiro, el Cliente deberá presentar al Comercio el código numérico de 4 (cuatro) dígitos generado por la Aplicación. Dicho código constituye el método exclusivo de verificación de la entrega. El Cliente es responsable de asegurarse de poder mostrar dicho código en el establecimiento.</p>
+<p><strong>8.3. </strong>El Cliente deberá verificar, al momento del retiro, que la Caja entregada corresponde a su Orden.</p>
+<p><strong>8.4. </strong>Órdenes no retiradas. SI EL CLIENTE NO RETIRA SU ORDEN DENTRO DE LA VENTANA DE RETIRO, LA ORDEN SE CONSIDERARÁ COMPLETADA Y NO DARÁ LUGAR A REEMBOLSO ALGUNO, sin perjuicio de los derechos que legalmente le correspondan al Cliente en caso de incumplimiento atribuible al Comercio o a Pikop. Esta condición se le presenta al Cliente mediante un aviso claro, visible y destacado dentro de la Aplicación, antes de que confirme el pago de su Orden. Ello se debe a que, al no cancelar dentro del plazo previsto en la cláusula 9.1, el Cliente no le dio al Comercio la oportunidad de rescatar y vender nuevamente el excedente a otra persona; el Comercio reservó y mantuvo disponible el producto durante toda la Ventana de Retiro, y el contenido de la Caja es, por su naturaleza, perecedero.</p>
+<p><strong>8.5. </strong>El Cliente se compromete a realizar únicamente Órdenes que tenga la intención real de retirar.</p>
+<h2>NOVENO: CANCELACIONES Y REEMBOLSOS</h2>
+<p><strong>9.1. </strong>Cancelación por el Cliente. El Cliente podrá cancelar su Orden sin costo alguno hasta 2 (dos) horas antes del inicio de la Ventana de Retiro. Este plazo tiene como propósito darle al Comercio una oportunidad real de rescatar y vender nuevamente el excedente antes de que finalice su jornada, en caso de que el Cliente cancele su Orden. El monto pagado será reembolsado conforme a la cláusula 9.5.</p>
+<p><strong>9.2. </strong>Solicitudes dentro de las 2 horas previas. Las cancelaciones solicitadas dentro de las 2 (dos) horas previas al inicio de la Ventana de Retiro, o durante la misma, se procesarán como una solicitud de reembolso, sujeta a evaluación por parte de Pikop conforme a esta cláusula.</p>
+<p><strong>9.3. </strong>Solicitud de reembolso. El Cliente podrá solicitar un reembolso a través de la Aplicación, indicando el motivo correspondiente y aportando, cuando así se le solicite, evidencia fotográfica. Los motivos que pueden dar lugar a un reembolso incluyen, entre otros: comercio cerrado durante la Ventana de Retiro; comida en mal estado; cantidad entregada incorrecta; producto que no coincide con las etiquetas dietéticas publicadas; presencia de objetos extraños o riesgo de seguridad alimentaria; pedido no entregado al Cliente; cobro incorrecto o doble cobro.</p>
+<p><strong>9.4. </strong>Plazo para solicitar un reembolso. Toda solicitud de reembolso deberá presentarse dentro de las 48 (cuarenta y ocho) horas siguientes a la finalización de la Ventana de Retiro correspondiente. Transcurrido dicho plazo, el Cliente no tendrá derecho a reembolso.</p>
+<p><strong>9.5. </strong>Forma del reembolso. Los reembolsos aprobados se procesarán al mismo medio de pago utilizado por el Cliente al realizar la Orden. Pikop enviará al Cliente el comprobante de reembolso correspondiente conforme a la cláusula 7.6. Una vez aprobada la solicitud, el reembolso será procesado dentro de un plazo máximo de 7 (siete) días hábiles, contados desde su aprobación. Dicho plazo corresponde al tiempo de procesamiento de Pikop; el tiempo adicional que la entidad financiera o el proveedor de servicios de pago requiera para reflejar el abono en la cuenta del Cliente no es atribuible a Pikop.</p>
+<p><strong>9.6. </strong>Cancelación por el Comercio. El Comercio podrá cancelar una Orden si, por cualquier razón, no cuenta con el excedente previsto. En tal caso, el Cliente será notificado a través de la Aplicación y recibirá el reembolso completo del monto pagado, sin que ello genere derecho a compensación adicional alguna.</p>
+<p><strong>9.7. </strong>Cancelación por Pikop. Pikop podrá cancelar Órdenes, a su razonable discreción, cuando lo considere necesario, incluyendo casos de retiro de producto (&quot;recall&quot;), disputa, sospecha de fraude, o cualquier otro asunto que requiera dicha medida. En tales casos, el Cliente recibirá el reembolso correspondiente.</p>
+<p><strong>9.8. </strong>Comportamiento inusual de cancelaciones. El comportamiento de Órdenes y cancelaciones del Cliente estará sujeto a revisión por parte de Pikop. En caso de detectarse un patrón inusual o abusivo de cancelaciones o de solicitudes de reembolso, Pikop podrá restringir temporalmente el acceso del Cliente a determinadas funcionalidades, restringir su capacidad de utilizar Créditos Promocionales, o suspender su cuenta conforme a la cláusula Décimo Sexta.</p>
+<p><strong>9.9. </strong>Estos Términos no limitan los derechos que la legislación panameña de protección al consumidor otorgue al Cliente frente al Comercio.</p>
+<h2>DÉCIMO: CRÉDITOS PROMOCIONALES</h2>
+<p><strong>10.1. </strong>Pikop podrá, a su entera discreción, otorgar al Cliente Créditos Promocionales o Cajas Gratis, como parte de campañas o promociones. Estos son dos beneficios distintos entre sí: los Créditos Promocionales son un saldo virtual aplicable al pago de cualquier Caja dentro de la Aplicación, mientras que una Caja Gratis es la cobertura total, por parte de Pikop, del costo de una Caja específica. El costo de ambos beneficios es asumido por Pikop.</p>
+<p><strong>10.2. </strong>Los Créditos Promocionales: (i) deberán usarse para la audiencia y el propósito previstos, y de manera lícita; (ii) no podrán duplicarse, venderse, transferirse, ni ponerse a disposición del público general, salvo autorización expresa de Pikop; (iii) no son canjeables por dinero en efectivo; (iv) podrán tener una fecha de vencimiento, la cual será comunicada al Cliente de manera clara, previa y transparente, tanto en estos Términos como en la comunicación mediante la cual se otorgue el beneficio; y (v) podrán estar sujetos a condiciones específicas informadas al momento de su otorgamiento.</p>
+<p><strong>10.3. </strong>Pikop se reserva el derecho de invalidar, cancelar o descontar Créditos Promocionales, en cualquier momento y sin responsabilidad alguna, cuando determine o tenga motivos razonables para creer que su obtención o uso fue fraudulento, ilegal, o contrario a estos Términos o a las condiciones específicas de la promoción.</p>
+<p><strong>10.4. </strong>Cuando el Cliente mantenga un saldo pendiente frente a Pikop por cualquier concepto, los Créditos Promocionales disponibles en su cuenta podrán aplicarse directamente a la cancelación de dicho saldo.</p>
+<p><strong>10.5. </strong>Pérdida de los beneficios promocionales. Esta cláusula aplica exclusivamente a los beneficios promocionales gratuitos otorgados por Pikop y no afecta en ningún caso los importes efectivamente pagados por el Cliente. La posibilidad de que estos beneficios se pierdan al eliminarse la cuenta se comunica al Cliente de manera clara y previa, tanto en estos Términos como en la comunicación mediante la cual se otorgue el beneficio. Los Créditos Promocionales y las Cajas Gratis son beneficios gratuitos otorgados por Pikop, y no constituyen dinero pagado por el Cliente. En consecuencia, al eliminarse la cuenta del Cliente, ya sea por decisión propia o por suspensión o cancelación conforme a la cláusula Décimo Sexta, todo saldo de Créditos Promocionales y toda Caja Gratis no utilizada se perderán de forma definitiva, sin que ello genere a favor del Cliente derecho a reembolso, compensación, canje por dinero en efectivo, ni contraprestación de ninguna naturaleza. Los reembolsos derivados de cancelaciones, pagos duplicados, transacciones no ejecutadas, o cualquier otro supuesto que genere a favor del Cliente el derecho a la devolución de dinero efectivamente pagado, no podrán convertirse unilateralmente en Créditos Promocionales ni se extinguirán como consecuencia de la eliminación o suspensión de la cuenta, y serán devueltos al Cliente conforme a la cláusula 9.5.</p>
+<h2>DÉCIMO PRIMERO: CONDUCTA DEL CLIENTE</h2>
+<p><strong>11.1. </strong>El Cliente se compromete a actuar en todo momento de buena fe y de manera razonable, y a cumplir con todas las leyes y regulaciones aplicables en relación con su uso del Portal.</p>
+<p><strong>11.2. </strong>Se espera que el Cliente muestre respeto hacia el personal y demás clientes del Comercio, así como hacia el personal de Pikop. Si el Cliente actúa de manera inapropiada, abusiva o irrespetuosa hacia un Comercio (incluyendo sus empleados o agentes), hacia otro consumidor, o hacia Pikop (incluyendo sus empleados o agentes), o si comete un delito contra o dentro del establecimiento de un Comercio en relación con el Portal, Pikop podrá suspender o cancelar su cuenta conforme a la cláusula Décimo Sexta.</p>
+<p><strong>11.3. </strong>La intervención de Pikop conforme a la cláusula anterior no priva al Comercio de los medios y derechos que tenga a su disposición para obtener las reparaciones o ejercer las acciones que correspondan.</p>
+<p><strong>11.4. </strong>El Cliente reconoce que es el único responsable de toda la actividad que ocurra en su cuenta, y se obliga a notificar de inmediato a Pikop cualquier cambio en su elegibilidad para utilizar el Portal, o cualquier violación de seguridad o uso no autorizado de su cuenta.</p>
+<h2>DÉCIMO SEGUNDO: RESEÑAS Y CONTENIDO GENERADO POR EL CLIENTE</h2>
+<p><strong>12.1. </strong>Pikop podrá permitir al Cliente calificar su experiencia y dejar comentarios, reseñas, fotografías u otro contenido dentro del Portal (el &quot;Contenido del Cliente”).</p>
+<p><strong>12.2. </strong>Todo Contenido del Cliente deberá ser preciso y veraz, y no podrá contener lenguaje discriminatorio, ofensivo, difamatorio, obsceno, ni infringir derechos de terceros.</p>
+<p><strong>12.3. </strong>Pikop no verifica las reseñas ni el Contenido del Cliente publicado por otros usuarios. En consecuencia, el Cliente reconoce que las reseñas y calificaciones que visualice en el Portal pueden ser inexactas, incorrectas o engañosas, y que Pikop no asume responsabilidad alguna por ellas.</p>
+<p><strong>12.4. </strong>El Cliente otorga a Pikop una licencia no exclusiva, gratuita, mundial y transferible para utilizar, reproducir, exhibir y distribuir el Contenido del Cliente dentro del Portal y en materiales promocionales de Pikop, con el fin de operar y promocionar el servicio.</p>
+<p><strong>12.5. </strong>Pikop podrá eliminar, sin previo aviso, cualquier Contenido del Cliente que, a su razonable criterio, incumpla estos Términos.</p>
+<p><strong>12.6. </strong>Sugerencias y comentarios (&quot;Feedback&quot;). Si el Cliente proporciona a Pikop ideas, sugerencias o comentarios relativos al Portal, sus funcionalidades, promociones o modelo de negocio, Pikop será libre de utilizarlos sin restricción alguna, sin que ello genere a favor del Cliente derecho a participación, retribución o reconocimiento de ninguna naturaleza.</p>
+<h2>DÉCIMO TERCERO: QUEJAS, RECLAMOS Y SOPORTE</h2>
+<p><strong>13.1. </strong>Toda queja o reclamo relacionado con el uso del Portal deberá presentarse, en primera instancia, a través de los canales de atención disponibles en la Aplicación o al correo contacto@pikop.app, indicando el motivo de la insatisfacción y cualquier información adicional que Pikop razonablemente solicite.</p>
+<p><strong>13.2. </strong>Pikop atenderá las quejas conforme a sus procesos internos y, cuando corresponda, en coordinación con el Comercio. Cuando la queja se refiera exclusivamente a la calidad, cantidad o contenido de una Caja, Pikop podrá remitir al Cliente directamente al Comercio, en su calidad de vendedor de los productos.</p>
+<p><strong>13.3. </strong>Lo dispuesto en esta cláusula no limita los medios de que dispone el Cliente para resolver cualquier controversia con el Comercio conforme a la legislación aplicable, ni el derecho del Cliente de acudir a la Autoridad de Protección al Consumidor y Defensa de la Competencia (ACODECO) o a la autoridad competente que corresponda.</p>
+<p><strong>13.4. </strong>Soporte. Pikop pone a disposición del Cliente un servicio de soporte para la utilización de la Aplicación, disponible a través de los canales indicados en la misma o al correo contacto@pikop.app, sin costo adicional para el Cliente.</p>
+<p><strong>13.5. </strong>Cuando el Cliente solicite soporte, autoriza a Pikop a acceder a la información de su cuenta y de sus Órdenes en la medida razonablemente necesaria para atender su solicitud. Pikop se compromete a mantener la confidencialidad de dicha información y a utilizarla exclusivamente para los fines de brindar el soporte solicitado.</p>
+<h2>DÉCIMO CUARTO: PROPIEDAD INTELECTUAL</h2>
+<p><strong>14.1. </strong>El Portal y los servicios ofrecidos a través del mismo, incluyendo toda la tecnología subyacente, software, gráficos, diseños, textos, y todos los derechos de autor, marcas comerciales, nombres comerciales, logotipos y demás derechos de propiedad intelectual contenidos en ellos, son y seguirán siendo propiedad única y exclusiva de Pikop, salvo por el contenido perteneciente a terceros que hayan autorizado a Pikop su exhibición.</p>
+<p><strong>14.2. </strong>Salvo por la licencia limitada otorgada en la cláusula Cuarta, estos Términos no conceden al Cliente ninguna licencia ni derecho, expreso o implícito, sobre la propiedad intelectual de Pikop o de terceros.</p>
+<p><strong>14.3. </strong>El Cliente se compromete a no copiar, distribuir, modificar, ni crear obras derivadas de ningún contenido del Portal sin el consentimiento previo y por escrito de Pikop. Ninguna parte del Portal podrá ser reproducida o almacenada en otro sistema o plataforma, ni incluida en ningún sistema de recuperación electrónica, público o privado, sin dicha autorización.</p>
+<h2>DÉCIMO QUINTO: PRIVACIDAD Y NOTIFICACIONES</h2>
+<p><strong>15.1. </strong>El tratamiento de los datos personales del Cliente se rige por la Política de Privacidad de Pikop, disponible en la Aplicación y en pikop.app, la cual forma parte integral de estos Términos. Al aceptar estos Términos, el Cliente confirma haber leído y aceptado dicha Política.</p>
+<p><strong>15.2. </strong>El Cliente reconoce y acepta que Pikop podrá compartir su nombre y número de teléfono con el Comercio correspondiente, únicamente con el fin de coordinar el retiro de su Orden.</p>
+<p><strong>15.3. </strong>Las Partes acuerdan el correo electrónico y las notificaciones dentro de la Aplicación como medios idóneos de notificación. A Pikop: contacto@pikop.app. Al Cliente: el correo electrónico registrado en su cuenta.</p>
+<p><strong>15.4. </strong>El Cliente autoriza a Pikop a enviarle notificaciones automatizadas (push), mensajes de texto (SMS) y correos electrónicos relacionados con su cuenta, sus Órdenes, pagos, reembolsos y el funcionamiento del Portal. El Cliente puede desactivar las notificaciones push en cualquier momento desde la configuración de su dispositivo móvil; sin embargo, ciertas comunicaciones relacionadas con su cuenta, pagos o reembolsos podrán continuar enviándose por correo electrónico.</p>
+<p><strong>15.5. </strong>El Cliente podrá oponerse en cualquier momento, y de forma gratuita, a recibir comunicaciones promocionales o de marketing, escribiendo a contacto@pikop.app.</p>
+<p><strong>15.6. </strong>Pikop se reserva el derecho de acceder, conservar y divulgar cualquier información que considere razonablemente necesaria para: (i) cumplir con cualquier ley, regulación, proceso legal o requerimiento de autoridad competente; (ii) hacer cumplir estos Términos, incluyendo la investigación de posibles incumplimientos; (iii) detectar, prevenir o atender fraude, problemas de seguridad o problemas técnicos; (iv) responder a solicitudes de soporte; o (v) proteger los derechos, la propiedad o la seguridad de Pikop, de sus usuarios o del público.</p>
+<h2>DÉCIMO SEXTO: SUSPENSIÓN Y TERMINACIÓN</h2>
+<p><strong>16.1. </strong>El Cliente podrá dejar de utilizar el Portal y eliminar su cuenta en cualquier momento, conforme a la cláusula 3.6.</p>
+<p><strong>16.2. </strong>Pikop podrá suspender o cancelar el acceso del Cliente al Portal, incluyendo la eliminación de su cuenta, en cualquier momento y a su razonable discreción, cuando:</p>
+<ul>
+<li>El Cliente incumpla de forma material o reiterada estos Términos.</li>
+<li>Sea necesario para cumplir con un requerimiento legal o una orden de autoridad competente.</li>
+<li>Pikop tenga motivos razonables para creer que la conducta del Cliente causa daño o responsabilidad a Pikop, a un Comercio o a un tercero, incluyendo intentos de acceso no autorizado, suplantación de identidad, acoso, envío de contenido no solicitado, fraude, o extracción de contenido que no le pertenece.</li>
+<li>Pikop considere razonablemente que el Cliente ha actuado de manera abusiva o irrespetuosa hacia un empleado, agente, socio, Comercio u otro usuario.</li>
+<li>El Cliente presente un patrón inusual o abusivo de cancelaciones o solicitudes de reembolso, conforme a la cláusula 9.8.</li>
+<li>El Cliente cree o intente crear una nueva cuenta después de la suspensión o cancelación de otra cuenta suya.</li>
+<li>El Cliente permanezca inactivo en el Portal durante un período prolongado.</li>
+</ul>
+<p><strong>16.3. </strong>Si el Cliente considera que su cuenta fue suspendida o cancelada por error, podrá contactar a Pikop al correo contacto@pikop.app para que dicha determinación sea revisada.</p>
+<p><strong>16.4. </strong>La terminación no afectará las obligaciones asumidas por cualquiera de las Partes con anterioridad a la fecha de terminación, ni el derecho de Pikop a recuperar cualquier saldo pendiente que el Cliente le adeude.</p>
+<p><strong>16.5. </strong>Discontinuación del servicio. Pikop podrá, en cualquier momento, discontinuar total o parcialmente el Portal. En tal caso, Pikop lo notificará al Cliente a través de la Aplicación o por correo electrónico con una antelación razonable, procesará el reembolso de toda Orden pagada y aún no retirada, y liquidará cualquier saldo pendiente a favor del Cliente. Salvo por lo anterior, la discontinuación del servicio no generará a favor del Cliente derecho a indemnización o compensación de ninguna naturaleza.</p>
+<h2>DÉCIMO SÉPTIMO: GARANTÍAS, RESPONSABILIDAD E INDEMNIDAD</h2>
+<p><strong>17.1. </strong>Ausencia de garantías. EL PORTAL SE PROPORCIONA &quot;TAL CUAL&quot; (&quot;AS IS&quot;) Y &quot;SEGÚN DISPONIBILIDAD&quot;. En la máxima medida permitida por la ley aplicable, y sin que ello alcance los derechos irrenunciables que la legislación panameña de protección al consumidor reconozca al Cliente, Pikop renuncia a toda declaración y garantía, expresa o implícita, no establecida expresamente en estos Términos, incluyendo las garantías implícitas de comerciabilidad, idoneidad para un fin particular y no infracción. Pikop no garantiza la fiabilidad, puntualidad, calidad, idoneidad o disponibilidad del Portal, ni de los productos ofrecidos por los Comercios a través del mismo, ni que el Portal funcione de forma ininterrumpida o libre de errores.</p>
+<p><strong>17.2. </strong>Pikop no garantiza la calidad, idoneidad ni seguridad de los Comercios afiliados ni de sus productos.</p>
+<p><strong>17.3. </strong>Interrupciones del servicio. Pikop no será responsable por caídas o interrupciones del Portal debidas a fallas técnicas, de Internet, mantenimiento, o circunstancias ajenas a su control razonable, procurando restablecer el servicio con la mayor celeridad posible.</p>
+<p><strong>17.4. </strong>Limitación de responsabilidad. En la máxima medida permitida por la ley aplicable, y únicamente respecto de aquellos aspectos que efectivamente no se encuentran bajo su control razonable, Pikop no será responsable por daños indirectos, incidentales, especiales, punitivos o consecuenciales, incluyendo lucro cesante, pérdida de datos, o pérdida de oportunidad, derivados de o relacionados con el uso del Portal. Esta limitación no excluye la responsabilidad propia de Pikop derivada de sus actuaciones, de sus incumplimientos, ni de su negligencia.</p>
+<p><strong>17.5. </strong>Pikop no será responsable por pérdidas o daños derivados de: (i) actos u omisiones de un Comercio o de terceros, incluyendo el contenido de las Cajas, en el entendido de que Pikop no es el fabricante ni el proveedor directo de los alimentos preparados y comercializados por los Comercios, por lo que la responsabilidad respecto de la calidad, composición, preparación e inocuidad de dichos productos se regirá por las obligaciones y responsabilidades legalmente atribuibles a cada participante; (ii) el uso que el Cliente haga del Portal, o su imposibilidad de acceder al mismo; (iii) la disponibilidad del Portal o de las Cajas; (iv) el contenido de sitios de terceros enlazados desde el Portal; o (v) circunstancias fuera del control razonable de Pikop.</p>
+<p><strong>17.6. </strong>En la máxima medida permitida por la ley aplicable, y salvo por los supuestos excluidos en la cláusula 17.7 y por los derechos irrenunciables que la legislación panameña de protección al consumidor reconozca al Cliente, la responsabilidad total de Pikop frente al Cliente, por cualquier causa y bajo cualquier teoría de responsabilidad, no excederá el monto total pagado por el Cliente a través del Portal durante los 12 (doce) meses anteriores al hecho que originó el reclamo.</p>
+<p><strong>17.7. </strong>Ninguna disposición de esta cláusula limita ni excluye la responsabilidad de Pikop por muerte, lesiones personales, fraude, declaraciones fraudulentas, dolo o negligencia, ni los derechos irrenunciables que la legislación panameña de protección al consumidor otorgue al Cliente, ni la responsabilidad que se derive del incumplimiento por parte de Pikop de sus propias obligaciones bajo estos Términos.</p>
+<p><strong>17.8. </strong>Indemnidad. El Cliente se compromete a indemnizar y mantener indemne a Pikop, sus socios, directores, empleados y agentes, frente a cualquier reclamo, demanda, responsabilidad, costo o gasto (incluyendo honorarios razonables de abogados) que derive de: (i) su uso del Portal; (ii) su incumplimiento de estos Términos; (iii) su infracción de cualquier ley o regulación aplicable; o (iv) su infracción de los derechos de cualquier tercero, incluyendo los Comercios.</p>
+<h2>DÉCIMO OCTAVO: DISPOSITIVOS, RED Y DISPONIBILIDAD</h2>
+<p><strong>18.1. </strong>El Cliente es responsable de obtener y mantener el acceso a la red de datos necesario para utilizar el Portal, así como el hardware o dispositivo compatible. Podrán aplicarse las tarifas de datos y mensajería de su operador móvil, las cuales serán asumidas por el Cliente.</p>
+<p><strong>18.2. </strong>Pikop no garantiza que el Portal funcione correctamente en todo hardware o dispositivo particular, ni en todas las versiones de sistema operativo.</p>
+<p><strong>18.3. </strong>Pikop podrá suspender temporalmente el acceso al Portal para realizar labores de mantenimiento, actualizaciones, corrección de errores o mejoras, procurando minimizar el impacto para el Cliente.</p>
+<p><strong>18.4. </strong>Pikop tiene control exclusivo sobre la incorporación, modificación o eliminación de cualquier característica o funcionalidad del Portal, así como sobre el orden, la frecuencia y la forma en que los Comercios y sus Cajas se presentan al Cliente, incluyendo los resultados de búsqueda.</p>
+<h2>DÉCIMO NOVENO: SERVICIOS Y ENLACES DE TERCEROS</h2>
+<p><strong>19.1. </strong>El Portal puede contener enlaces a sitios web, aplicaciones o servicios de terceros que no son operados ni controlados por Pikop (por ejemplo, Yappy, WhatsApp, tiendas de aplicaciones o redes sociales). Pikop no respalda, garantiza ni asume responsabilidad alguna por los productos, servicios, contenidos o prácticas de dichos terceros.</p>
+<p><strong>19.2. </strong>Se recomienda al Cliente revisar los términos y condiciones y las políticas de privacidad de cualquier sitio o servicio externo al que acceda a través del Portal.</p>
+<p><strong>19.3. </strong>El Cliente reconoce que el uso de la Aplicación descargada desde tiendas de aplicaciones de terceros puede estar sujeto adicionalmente a los términos de servicio de dichas tiendas.</p>
+<h2>VIGÉSIMO: LEY APLICABLE Y JURISDICCIÓN</h2>
+<p><strong>20.1. </strong>Estos Términos se rigen por las leyes de la República de Panamá. Cualquier controversia derivada de su interpretación, validez o cumplimiento será sometida a los Tribunales Ordinarios de Justicia de la Ciudad de Panamá, con renuncia expresa a cualquier otro fuero o jurisdicción, sin perjuicio de los derechos irrenunciables que la legislación de protección al consumidor otorgue al Cliente.</p>
+<h2>VIGÉSIMO PRIMERO: MODIFICACIONES A ESTOS TÉRMINOS</h2>
+<p><strong>21.1. </strong>Pikop podrá modificar estos Términos en cualquier momento. Cuando se realicen cambios materiales, Pikop lo notificará al Cliente a través de la Aplicación o por correo electrónico, y publicará la versión actualizada en el Portal.</p>
+<p><strong>21.2. </strong>Los cambios no se aplicarán de forma retroactiva al uso que el Cliente haya hecho del Portal antes de su entrada en vigor, pero aplicarán a todo uso posterior.</p>
+<p><strong>21.3. </strong>El acceso o uso continuado del Portal después de la entrada en vigor de los nuevos Términos constituirá la aceptación de los mismos. Si el Cliente no está de acuerdo con las modificaciones, podrá dejar de utilizar el Portal y eliminar su cuenta.</p>
+<h2>VIGÉSIMO SEGUNDO: DISPOSICIONES GENERALES</h2>
+<p><strong>22.1. </strong>Cesión. Pikop podrá ceder o transferir estos Términos, total o parcialmente, a un tercero, incluyendo a una afiliada, a un adquirente de su capital, negocio o activos, o a un sucesor por fusión, mediante notificación al Cliente. El Cliente no podrá ceder ni transferir estos Términos, ni los derechos u obligaciones derivados de los mismos, sin el consentimiento previo y por escrito de Pikop.</p>
+<p><strong>22.2. </strong>Naturaleza de la relación. Nada en estos Términos constituye una relación de sociedad, empresa conjunta, empleo, agencia o representación entre el Cliente, Pikop y los Comercios.</p>
+<p><strong>22.3. </strong>Nulidad parcial. Si cualquier disposición de estos Términos fuera declarada inválida, ilegal o inaplicable por autoridad competente, dicha disposición se interpretará, en la medida de lo posible, de forma que refleje su intención original; de no ser posible, se tendrá por no puesta, y las demás disposiciones permanecerán vigentes y plenamente aplicables.</p>
+<p><strong>22.4. </strong>Inacción. La falta de ejercicio, en alguna oportunidad, de cualquier derecho derivado de estos Términos no será interpretada como una renuncia a ejercerlo, ni impedirá su ejercicio posterior.</p>
+<p><strong>22.5. </strong>Fuerza mayor. Pikop no será responsable por cualquier retraso o incumplimiento de sus obligaciones en la medida en que se deba a circunstancias fuera de su control razonable, incluyendo, sin limitar, decretos o prohibiciones gubernamentales, actos de fuerza mayor, huelgas, fallas generalizadas de telecomunicaciones o energía, o desastres naturales.</p>
+<p><strong>22.6. </strong>Acuerdo único y completo. Estos Términos, junto con la Política de Privacidad, constituyen el entendimiento único y completo entre las Partes respecto de su objeto, y dejan sin efecto cualquier acuerdo o entendimiento anterior, verbal o escrito, sobre la misma materia.</p>
+<p><strong>22.7. </strong>Idioma. Estos Términos podrán estar disponibles en español e inglés. En caso de cualquier discrepancia o conflicto entre ambas versiones, prevalecerá la versión en español.</p>
+<p><strong>22.8. </strong>Validez de la aceptación electrónica. La aceptación de estos Términos por medios electrónicos, incluyendo la aceptación dentro de la Aplicación, tendrá la misma validez y efecto legal que una firma autógrafa. El Cliente acepta que una versión impresa de estos Términos, y de cualquier comunicación enviada o recibida en forma electrónica, será admisible como medio probatorio en cualquier procedimiento judicial o administrativo.</p>
+<p><strong>22.9. </strong>Acceso y conservación de estos Términos. Estos Términos están redactados en español, en lenguaje claro y comprensible, y se encuentran disponibles de forma permanente y gratuita dentro de la Aplicación y en el sitio web de Pikop, de modo que el Cliente pueda consultarlos, descargarlos, almacenarlos y reproducirlos íntegramente en cualquier momento. Pikop conserva registro de la versión de estos Términos aceptada por cada Cliente, así como de la fecha y hora de la aceptación y de la cuenta desde la cual se realizó, con el fin de poder acreditarla ante el propio Cliente o ante cualquier autoridad competente. El Cliente podrá solicitar una copia de la versión vigente al momento de su aceptación escribiendo a contacto@pikop.app.</p>
+<p><strong>22.10. </strong>Interpretación. En estos Términos, las palabras &quot;incluyendo&quot; e &quot;incluye&quot; significan &quot;incluyendo, de forma meramente enunciativa y no limitativa”.</p>
+<p><strong>22.11. </strong>Supervivencia. La terminación de estos Términos no afectará la vigencia de las cláusulas Sexta (Contenido de las Cajas), Décimo Segunda (Reseñas y Contenido), Décimo Cuarta (Propiedad Intelectual), Décimo Séptima (Garantías, Responsabilidad e Indemnidad) y Vigésima (Ley Aplicable y Jurisdicción), las cuales continuarán aplicando conforme a sus propios términos.</p>
+<h2>VIGÉSIMO TERCERO: CONTACTO</h2>
+<p><strong>23.1. </strong>Para cualquier pregunta, queja o solicitud relacionada con estos Términos o con el uso del Portal, el Cliente puede escribir a contacto@pikop.app.</p>
+<p>Pikop, S.E.P. — RUC: 155783918-2-2026</p>
+<p>Provincia de Panamá, Distrito de Panamá, Corregimiento de San Francisco, Urbanización Punta Paitilla, Calle Winston Churchill, Edificio Mar de Plata, Departamento 3A.</p>
+</article>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <img class="footer-logo" src="brand_assets/pikop_logo_white_crop.png" alt="Pikop" loading="lazy" />
+        <p class="footer-tagline">Come bien. Paga poco. Descarga la app y encuentra cajas disponibles cerca de ti.</p>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Navegación</p>
+        <ul>
+          <li><a href="/#como-funciona">Cómo funciona</a></li>
+          <li><a href="/#para-negocios">Para negocios</a></li>
+          <li><a href="/#sobre-nosotros">Sobre nosotros</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Contáctanos</p>
+        <p style="font-size:0.88rem;color:rgba(255,255,255,0.55);">contacto@pikop.app</p>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Legal</p>
+        <ul>
+          <li><a href="/terminos">Términos y Condiciones — Clientes</a></li>
+          <li><a href="/terminos-comercios">Términos y Condiciones — Comercios</a></li>
+          <li><a href="/privacidad">Política de Privacidad</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Pikop. Todos los derechos reservados. Ciudad de Panamá, Panamá.</span>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  // Navbar scroll shadow
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobile-nav');
+  hamburger.addEventListener('click', () => {
+    const open = mobileNav.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', open);
+  });
+
+  // Close mobile nav on link click
+  mobileNav.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      mobileNav.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
+
+</body>
+</html>

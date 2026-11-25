@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Términos y Condiciones — Comercios | Pikop</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── TOKENS (matches index.html) ───────────────── */
+    :root {
+      --orange:      #F06000;
+      --orange-dk:   #C84E00;
+      --orange-lt:   rgba(240,96,0,0.12);
+      --teal:        #00B4B4;
+      --dark:        #1A1A1A;
+      --cream:       #FFF8F0;
+      --cream-lt:    #F5EFE6;
+      --white:       #FFFFFF;
+      --body:        #555555;
+      --font-head:   'Plus Jakarta Sans', sans-serif;
+      --font-body:   'Inter', sans-serif;
+    }
+
+    /* ─── RESET ──────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--white); color: var(--dark); overflow-x: hidden; }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ─── NAV (copied from index.html) ──────────────── */
+    #navbar {
+      position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-index: 100;
+      background: rgba(255,255,255,0.97);
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.08);
+      box-shadow: 0 2px 24px rgba(0,0,0,0.10);
+      transition: box-shadow 0.25s ease, backdrop-filter 0.25s ease;
+      white-space: nowrap;
+    }
+    #navbar.scrolled {
+      box-shadow: 0 4px 32px rgba(0,0,0,0.14);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: rgba(255,255,255,0.88);
+    }
+    .nav-inner {
+      padding: 0 20px 0 8px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #eb5d00;
+      border-radius: 999px;
+      padding: 6px 14px;
+    }
+    .nav-logo img { height: 34px; width: auto; object-fit: contain; display: block; }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: var(--font-head);
+      font-weight: 600;
+      font-size: 0.92rem;
+      color: var(--dark);
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--orange); }
+    .nav-links a:focus-visible { outline: 2px solid var(--orange); border-radius: 4px; }
+    .nav-cta {
+      font-family: var(--font-head);
+      font-weight: 600;
+      font-size: 0.92rem;
+      background: none;
+      color: var(--dark);
+      padding: 0;
+      border-radius: 0;
+      box-shadow: none;
+      transition: color 0.15s;
+    }
+    #navbar .nav-cta:hover { background: none; color: var(--orange); transform: none; }
+    #navbar .nav-cta:active { transform: none; }
+    #navbar .nav-cta:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; border-radius: 4px; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--dark);
+      border-radius: 2px;
+      transition: transform 0.25s, opacity 0.25s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 68px; left: 0; right: 0;
+      background: #fff;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      padding: 1.5rem 1.5rem 2rem;
+      flex-direction: column;
+      gap: 1.25rem;
+      z-index: 99;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--dark);
+    }
+    .mobile-nav .nav-cta { text-align: center; }
+
+    /* ─── LEGAL DOCUMENT LAYOUT ──────────────────────── */
+    .legal-main {
+      padding: 140px 24px 100px;
+    }
+    .legal-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .legal-doc h1 {
+      font-family: var(--font-head);
+      font-size: clamp(28px, 5vw, 38px);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      color: var(--dark);
+      margin-bottom: 0.6rem;
+    }
+    .legal-doc .legal-meta {
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      color: var(--body);
+      padding-bottom: 1.75rem;
+      margin-bottom: 1.75rem;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+    .legal-doc h2 {
+      font-family: var(--font-head);
+      font-size: clamp(19px, 2.6vw, 22px);
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+      color: var(--dark);
+      margin-top: 2.5rem;
+      margin-bottom: 0.9rem;
+    }
+    .legal-doc h3 {
+      font-family: var(--font-head);
+      font-size: clamp(16px, 2.2vw, 18px);
+      font-weight: 700;
+      line-height: 1.4;
+      color: var(--dark);
+      margin-top: 1.75rem;
+      margin-bottom: 0.6rem;
+    }
+    .legal-doc p {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--body);
+      margin-bottom: 1.1rem;
+    }
+    .legal-doc ul {
+      margin-bottom: 1.1rem;
+      padding-left: 1.4rem;
+    }
+    .legal-doc li {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--body);
+      margin-bottom: 0.5rem;
+    }
+    .legal-doc strong { color: var(--dark); font-weight: 700; }
+    .legal-doc .table-scroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 1.5rem 0 2rem;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 8px;
+    }
+    .legal-doc table {
+      width: 100%;
+      min-width: 420px;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+    }
+    .legal-doc th {
+      background: var(--cream-lt);
+      text-align: left;
+      padding: 0.75rem 1rem;
+      font-family: var(--font-head);
+      font-weight: 700;
+      color: var(--dark);
+      border-bottom: 2px solid rgba(0,0,0,0.08);
+    }
+    .legal-doc td {
+      padding: 0.65rem 1rem;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      color: var(--body);
+    }
+    .legal-doc tr:last-child td { border-bottom: none; }
+
+    /* ─── FOOTER (copied from index.html) ───────────── */
+    footer {
+      background: var(--dark);
+      border-top: 2px solid var(--orange);
+      padding: 3.5rem 24px 1.5rem;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 2.5rem;
+    }
+    .footer-logo { height: 58px; width: auto; object-fit: contain; display: block; margin-bottom: 0.75rem; }
+    .footer-tagline { font-size: 0.88rem; line-height: 1.7; color: rgba(255,255,255,0.45); max-width: 200px; }
+    .footer-col-title {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 1rem;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-col a {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.55);
+      transition: color 0.15s;
+    }
+    .footer-col a:hover { color: #fff; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding-top: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-copy { font-size: 0.82rem; color: rgba(255,255,255,0.25); }
+
+    /* ─── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 768px) {
+      #navbar { top: 0; left: 0; right: 0; transform: none; border-radius: 0; border-left: none; border-right: none; border-top: none; border-bottom: 1px solid rgba(0,0,0,0.07); box-shadow: none; }
+      .nav-inner { padding: 0 24px; justify-content: space-between; height: 64px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .legal-main { padding: 100px 20px 72px; }
+      .legal-doc .legal-meta { margin-bottom: 1.5rem; padding-bottom: 1.25rem; }
+    }
+    @media (max-width: 480px) {
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─── PRINT ──────────────────────────────────────── */
+    @media print {
+      #navbar, .mobile-nav, footer { display: none !important; }
+      .legal-main { padding: 0; }
+      .legal-container { max-width: 100%; }
+      body { background: #fff; }
+      .legal-doc .table-scroll { overflow-x: visible; border: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header id="navbar">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo" aria-label="Pikop inicio">
+      <img src="brand_assets/pikop_logo_no_bg.png" alt="Pikop" />
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="/#como-funciona">Cómo funciona</a></li>
+      <li><a href="/#para-negocios">Para negocios</a></li>
+      <li><a href="/#sobre-nosotros">Sobre nosotros</a></li>
+    </ul>
+    <a href="/#download" class="nav-cta">Descargar App</a>
+    <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<nav class="mobile-nav" id="mobile-nav" aria-label="Menú móvil">
+  <a href="/#como-funciona">Cómo funciona</a>
+  <a href="/#para-negocios">Para negocios</a>
+  <a href="/#sobre-nosotros">Sobre nosotros</a>
+  <a href="/#download" class="nav-cta">Descargar App</a>
+</nav>
+
+<main class="legal-main">
+  <div class="legal-container">
+<article class="legal-doc" data-doc="terminos-comercios-1.0" data-version="1.0">
+<h1>Términos y Condiciones para Comercios Afiliados</h1>
+<p class="legal-meta">Versión 1.0 · Última actualización: 24 de noviembre de 2026</p>
+<p>Los presentes Términos y Condiciones (en adelante, los &quot;Términos&quot;) de Pikop, S.E.P. (en adelante, &quot;Pikop&quot;) regulan las condiciones aplicables a la afiliación y uso de la plataforma de marketplace de Pikop por parte de comercios (en adelante, el &quot;Comercio&quot; y junto con Pikop, las &quot;Partes&quot;). Estos Términos, junto con la Política de Privacidad y cualquier anexo que corresponda, constituyen la totalidad del acuerdo entre las Partes.</p>
+<h2>PRIMERO: DEFINICIONES</h2>
+<p>1.1. Para efectos de estos Términos, los siguientes términos tendrán las siguientes definiciones:</p>
+<ul>
+<li>Aplicación: la aplicación móvil Pikop, para cualquiera de las tecnologías disponibles.</li>
+<li>Caja: paquete de comida excedente o próxima a vencer, ofrecida por el Comercio a través de la Aplicación a un precio reducido respecto de su valor original.</li>
+<li>Cliente: usuario final que adquiere Cajas a través de la Aplicación.</li>
+<li>Comisión: el porcentaje que Pikop retiene sobre el valor de cada Orden, conforme a la cláusula Novena.</li>
+<li>Culpa del Comercio (&quot;Merchant at Fault&quot;): determinación de que un reembolso o cancelación es atribuible a una acción u omisión del Comercio, conforme a la cláusula Octava.</li>
+<li>Liquidación: proceso semanal mediante el cual Pikop transfiere al Comercio los montos que le correspondan por las Órdenes del período.</li>
+<li>Orden: la compra de una o más Cajas realizada por un Cliente a través de la Aplicación.</li>
+<li>Portal: la Aplicación y el sitio web pikop.app, como plataforma tecnológica en su conjunto.</li>
+<li>Recuperación de Saldo (&quot;Clawback&quot;): descuento aplicado en una Liquidación futura, correspondiente a una Orden ya pagada al Comercio que resultó posteriormente reembolsada por Culpa del Comercio, o a una penalización por cancelación excesiva.</li>
+<li>Ventana de Retiro (&quot;Pickup&quot;): período de tiempo, indicado en cada Caja, dentro del cual el Cliente debe retirar su Orden en el establecimiento del Comercio.</li>
+</ul>
+<h2>SEGUNDO: OBJETO</h2>
+<p>2.1. Pikop pone a disposición del Comercio una plataforma tecnológica de marketplace que permite ofrecer Cajas a Clientes dentro de un radio geográfico determinado por la ubicación del establecimiento. El servicio de Pikop es exclusivamente de intermediación tecnológica: Pikop no participa en la preparación, manipulación, empaque, ni entrega física de los productos, siendo estas responsabilidades exclusivas del Comercio.</p>
+<p>2.2. A diferencia de otras plataformas de entrega de comida, el modelo de Pikop opera bajo la modalidad de retiro en el establecimiento (&quot;Pickup&quot;) exclusivamente. Pikop no ofrece ni gestiona servicio de reparto o logística de entrega.</p>
+<h2>TERCERO: REGISTRO Y VERIFICACIÓN DEL COMERCIO</h2>
+<p>3.1. Para afiliarse a Pikop, el Comercio deberá suministrar y mantener actualizada la siguiente documentación:</p>
+<ul>
+<li>Permiso sanitario emitido por el Ministerio de Salud (MINSA), vigente.</li>
+<li>Aviso de Operaciones vigente.</li>
+<li>RUC y dígito verificador (DV) de la razón social.</li>
+<li>Cédula de identidad de la persona que administra la cuenta en representación del Comercio.</li>
+<li>Comprobante bancario que acredite la titularidad de la cuenta bancaria registrada para el pago de comisiones.</li>
+</ul>
+<p>3.2. Pikop se reserva el derecho de rechazar, suspender o dar de baja la afiliación de cualquier Comercio cuya documentación resulte falsa, inexacta, o cuyos permisos no se encuentren vigentes, sin que ello genere responsabilidad ni derecho a compensación alguna a favor del Comercio.</p>
+<p>3.3. El Comercio no podrá solicitar el cierre de su cuenta mientras existan: Órdenes activas pendientes de completar, solicitudes de reembolso sin resolver, una Liquidación pendiente de pago, Órdenes completadas cuyo monto no haya sido aún liquidado, o una Recuperación de Saldo pendiente. Pikop notificará al Comercio la condición específica que impide el cierre, para que sea resuelta antes de procesar la solicitud.</p>
+<p>3.4. Aun después del cierre de la cuenta, Pikop conservará el permiso sanitario (MINSA), el Aviso de Operaciones, la cédula de identidad, y el comprobante bancario del Comercio, exclusivamente para fines de prevención de fraude y para demostrar que Pikop verificó dichos permisos antes de habilitar al Comercio para vender a través del Portal, conforme a lo descrito en la Política de Privacidad. El permiso sanitario (MINSA), el Aviso de Operaciones, la cédula de identidad del representante, el comprobante bancario y los datos de la cuenta bancaria registrada se conservarán por un período de 5 (cinco) años contados desde el cierre de la cuenta, al cabo del cual se eliminarán de forma segura. La conservación de aquellos de estos datos que correspondan a una persona natural se ampara en el artículo 15 de la Ley 81 de 2019. Dicho plazo se suspende mientras exista una obligación legal de conservación, una auditoría pendiente, o una reclamación administrativa o judicial que justifique legítimamente la retención por un período adicional.</p>
+<p>3.5. La persona que acepta estos Términos en representación del Comercio declara y garantiza contar con la autoridad suficiente para hacerlo y para vincular al Comercio a las obligaciones aquí establecidas.</p>
+<p>3.6. El Comercio se compromete a mantener actualizada su información con Pikop, incluyendo su situación legal, número de identificación tributaria, y registro empresarial. Dependiendo de la naturaleza legal del Comercio, Pikop podrá requerir información adicional de la persona que lo representa, incluyendo fecha de nacimiento y dirección residencial.</p>
+<p>3.7. El Comercio declara que no ha celebrado, y se compromete a no celebrar durante la vigencia de este Acuerdo, ningún otro convenio que le impida cumplir con sus obligaciones aquí establecidas.</p>
+<p>3.8. El Comercio se compromete a cumplir con todas las leyes aplicables a sus obligaciones derivadas de este Acuerdo, incluyendo, sin limitar, la legislación sobre protección de datos personales y protección al consumidor.</p>
+<p>3.9. El Comercio declara y garantiza que el contenido, imágenes, y demás material que suministre a Pikop no infringe ni viola derechos de propiedad intelectual o de publicidad de terceros.</p>
+<p>3.10. El Comercio declara y garantiza que el uso del contenido, imágenes, y demás material que suministre a Pikop no incumple ninguna obligación contractual que el Comercio tenga frente a un tercero (por ejemplo, restricciones de uso de una fotografía licenciada de un tercero). Pikop no será responsable por dicho incumplimiento, siendo esta una responsabilidad exclusiva del Comercio.</p>
+<h2>CUARTO: PUBLICACIÓN DE CAJAS</h2>
+<p>4.1. El Comercio podrá publicar Cajas únicamente con Ventana de Retiro correspondiente al día en curso (&quot;hoy&quot;) o al día siguiente (&quot;mañana&quot;). El Comercio se compromete a que la información publicada sobre cada Caja (precio, cantidad disponible, etiquetas dietéticas, horario de retiro) sea exacta y esté actualizada al momento de la publicación, y a mantener disponible efectivamente la cantidad de Cajas publicada.</p>
+<p>4.2. El Comercio se compromete a mantener el establecimiento abierto y operativo durante toda la Ventana de Retiro indicada en cada Caja publicada.</p>
+<p>4.3. Dado que las Cajas contienen comida excedente cuya composición exacta puede variar de un día a otro, la Aplicación permite al Comercio publicar una Caja sin seleccionar ninguna etiqueta dietética, precisamente para aquellos casos en que el Comercio no tenga certeza absoluta sobre el contenido dietético del producto. El Comercio es libre de omitir una etiqueta dietética si no puede garantizarla con certeza.</p>
+<p>4.4. Sin embargo, si el Comercio decide asignar una o más etiquetas dietéticas a una Caja (por ejemplo, &quot;sin gluten&quot;, &quot;vegano&quot;, &quot;vegetariano&quot;), dicha asignación constituye una declaración del Comercio frente al Cliente, de cuya exactitud el Comercio es el único y exclusivo responsable. PIKOP NO SERÁ RESPONSABLE, bajo ninguna circunstancia, por reclamos, daños, o consecuencias de cualquier naturaleza derivados de la calidad, composición, o inexactitud en el etiquetado dietético de los productos ofrecidos por el Comercio; dicha responsabilidad recae exclusivamente sobre el Comercio, conforme a lo establecido en la cláusula Décimo Tercera.</p>
+<p>4.5. Si Pikop o un Cliente lo solicitan, el Comercio deberá proporcionar toda la información exigida por la ley o regulación aplicable sobre el contenido de cada Caja, incluyendo, sin limitar, la lista de ingredientes, alérgenos, y demás información de etiquetado.</p>
+<p>4.6. El Comercio deberá contar, al momento del retiro, con toda la información sobre el contenido de la Caja exigida por la ley o regulación aplicable, así como con la información necesaria para que el Cliente sepa cómo conservar el contenido y hasta cuándo puede consumirlo.</p>
+<p>4.7. El precio que el Comercio establezca para cada Caja deberá incluir el Impuesto de Transferencia de Bienes Muebles y Servicios (ITBMS), cuando aplique. Es decir, el monto publicado por el Comercio como precio de la Caja es el monto final que pagará el Cliente, el cual ya incorpora dicho impuesto en caso de que el Comercio sea contribuyente de ITBMS.</p>
+<h2>QUINTO: OBLIGACIONES GENERALES DEL COMERCIO</h2>
+<p>5.1. Entregar los productos en empaques adecuados y sellados que garanticen su inocuidad durante el tiempo de espera hasta el retiro por el Cliente.</p>
+<p>5.2. Mantener la confidencialidad de sus credenciales de acceso a la Aplicación, siendo el único responsable por todas las acciones realizadas desde su cuenta, incluyendo el uso indebido por parte de terceros a quienes el Comercio otorgue acceso.</p>
+<p>5.3. Abstenerse de realizar prácticas que desincentiven el uso del Portal o que puedan perjudicar la reputación de Pikop o de la marca &quot;Pikop&quot;.</p>
+<p>5.4. Ofrecer productos de calidad consistente con la que ofrece a través de sus demás canales de venta.</p>
+<p>5.5. No está permitido ofrecer bebidas alcohólicas a través de Pikop, bajo ninguna circunstancia.</p>
+<p>5.6. El Comercio únicamente podrá publicar en el Portal comida excedente. Queda expresamente prohibido que el Comercio produzca o prepare comida en mayor cantidad de lo que produciría habitualmente con el propósito de venderla a través de Pikop.</p>
+<p>5.7. El valor original de los productos contenidos en cada Caja deberá ser igual o mayor al valor original declarado por el Comercio al publicar dicha Caja.</p>
+<p>5.8. Contar con productos en buen estado, aptos para la venta al público, que cumplan con la totalidad de los permisos, licencias y autorizaciones exigidas por las autoridades de salud y demás entidades regulatorias aplicables. Asimismo, garantizar que los productos sean inocuos, seguros y adecuados para su consumo, cumpliendo con las normativas aplicables en materia de calidad, etiquetado, almacenamiento, y seguridad alimentaria.</p>
+<h2>SEXTO: RETIRO DE PRODUCTOS Y ALERTAS DE SEGURIDAD ALIMENTARIA</h2>
+<p>6.1. El Comercio se compromete a remover de inmediato sus Cajas publicadas en el Portal y notificar a Pikop sin demora, en caso de: (a) un retiro de producto (&quot;recall&quot;), propio o exigido por autoridad competente; (b) tener conocimiento de un riesgo o problema relacionado con productos que haya ofrecido a través del Portal; (c) tener conocimiento de un incumplimiento de leyes, reglas o regulaciones aplicables a sus productos; o (d) la pérdida o falta de vigencia de cualquier permiso o licencia necesaria para ofrecer legalmente sus productos.</p>
+<p>6.2. Ante cualquiera de los supuestos anteriores, Pikop podrá retractar las Órdenes pendientes relacionadas, notificar a los Clientes afectados, y reembolsarles los montos correspondientes.</p>
+<h2>SÉPTIMO: PROCESO DE COMPRA Y CONFIRMACIÓN DE ENTREGA</h2>
+<p>7.1. Al momento de retirar su Orden, el Cliente presentará al Comercio un código numérico de 4 dígitos, generado por la Aplicación, como método exclusivo de verificación de la entrega.</p>
+<p>7.2. El Comercio se compromete a verificar este código antes de entregar la Orden, en todos los casos, sin excepción. Confirmar una Orden como entregada sin haber verificado el código expone al Comercio y a Pikop a un riesgo de fraude, y podrá dar lugar a la suspensión de la cuenta del Comercio.</p>
+<p>7.3. Por cada Orden completada, Pikop emitirá al Comercio, a través de su proveedor de facturación electrónica autorizado por la Dirección General de Ingresos (DGI), una factura correspondiente a la Comisión.</p>
+<p>7.4. Facturación al Cliente. El Comercio, en su calidad de vendedor de los productos contenidos en la Caja, es el responsable de emitir al Cliente la factura fiscal correspondiente a la venta, así como la nota de crédito que proceda en caso de un reembolso aprobado, conforme a la normativa de la Dirección General de Ingresos (DGI). Pikop no emite al Cliente factura fiscal alguna por la venta. Pikop únicamente le remite al Cliente, por correo electrónico, un comprobante de pago y, cuando aplique, un comprobante de reembolso; ambos son documentos no fiscales que identifican al Comercio con su razón social, RUC y dígito verificador, e indican al Cliente que debe dirigirse al Comercio para obtener la factura fiscal que corresponda.</p>
+<h2>OCTAVO: CANCELACIONES Y REEMBOLSOS</h2>
+<p>8.1. Cancelación por parte del Cliente. El Cliente podrá cancelar una Orden sin costo alguno hasta 2 (dos) horas antes del inicio de la Ventana de Retiro. Cancelaciones solicitadas dentro de las 2 horas previas al inicio de la Ventana de Retiro se procesarán como una solicitud de reembolso sujeta a la determinación de Culpa del Comercio conforme a esta cláusula.</p>
+<p>8.2. Motivos de reembolso y determinación de responsabilidad. Ante una solicitud de reembolso, Pikop determinará si la Culpa corresponde al Comercio, considerando el motivo indicado por el Cliente y, cuando corresponda, evidencia fotográfica aportada por éste:</p>
+<ul>
+<li>Se considerará Culpa del Comercio: comercio cerrado durante la Ventana de Retiro; comida en mal estado; cantidad entregada incorrecta; producto que no coincide con las etiquetas dietéticas publicadas; presencia de objetos extraños o riesgo de seguridad alimentaria; Comercio estaba cerrado; pedido no entregado al Cliente; cancelación de la Orden por parte del propio Comercio.</li>
+<li>No se considerará Culpa del Comercio: reembolsos por cobro incorrecto o doble cobro, los cuales son atribuibles a Pikop.</li>
+<li>Para el motivo &quot;Otro&quot;, Pikop determinará la responsabilidad caso por caso, en base a la evidencia disponible.</li>
+</ul>
+<p>8.3. Derecho de respuesta del Comercio. Ante una solicitud de reembolso, el Comercio contará con un plazo de 48 (cuarenta y ocho) horas, contadas desde su notificación, para presentar su versión de los hechos y evidencia correspondiente. Transcurrido dicho plazo sin respuesta del Comercio, Pikop podrá resolver la solicitud con la información disponible; ello no implica que la resolución sea necesariamente desfavorable al Comercio, quien conserva la posibilidad de que la solicitud sea resuelta a su favor.</p>
+<p>8.4. Efecto de un reembolso o cancelación aprobados. Toda Orden cancelada, o cuyo reembolso sea aprobado por Culpa del Comercio, no generará pago alguno a favor del Comercio; en dicho caso, Pikop emitirá al Comercio una nota de crédito, a través de su proveedor de facturación electrónica, que anula la factura de Comisión previamente emitida por esa Orden. Una Orden cuyo reembolso sea aprobado sin Culpa del Comercio sí generará el pago correspondiente, y la factura de Comisión original permanecerá vigente, sin emitirse nota de crédito alguna. Cuando la cancelación de una Orden sea decidida por Pikop por causas ajenas al Comercio —por ejemplo, sospecha de fraude por parte del Cliente, una disputa entre Pikop y el Cliente, o un error de la plataforma— dicha cancelación no se considerará Culpa del Comercio, y el Comercio conservará su derecho al pago correspondiente, siempre que haya cumplido con tener la Orden disponible durante la Ventana de Retiro.</p>
+<p>8.5. Manejo de quejas del Cliente. Pikop atenderá las quejas de Clientes relacionadas con el uso del Portal, incluyendo experiencias de retiro o el contenido de las Cajas, conforme a sus propios procesos internos. Pikop podrá requerir información al Comercio para atender una queja, la cual el Comercio se compromete a proporcionar oportunamente, y podrá remitir al Cliente directamente al Comercio cuando la queja se refiera exclusivamente a la calidad o contenido de una Caja.</p>
+<p>8.6. Si el Comercio recibe una queja de un Cliente relacionada con su experiencia con el Portal (y no con la calidad o contenido de una Caja específica), el Comercio se compromete a remitir al Cliente a Pikop, o a reenviar dicha queja a Pikop si la recibe por escrito.</p>
+<h2>NOVENO: PAGOS Y LIQUIDACIÓN SEMANAL</h2>
+<p>9.1. El Comercio otorga a Pikop un mandato para recibir, en su nombre, los pagos de los Clientes correspondientes a las Cajas que el Comercio les venda. El pago recibido por Pikop conforme a este mandato libera completamente al Cliente de su obligación de pago frente al Comercio.</p>
+<p>9.2. Comisión. Pikop retendrá una Comisión del 30% (treinta por ciento) sobre el valor base de cada Orden, previa deducción del Impuesto de Transferencia de Bienes Muebles y Servicios (ITBMS) cuando el Comercio sea contribuyente de dicho impuesto. Esta Comisión aplicará por igual a Órdenes pagadas por el Cliente y a Órdenes canjeadas mediante créditos promocionales (&quot;Cajas gratis&quot;), en cuyo caso Pikop asumirá el costo de la promoción, no el Comercio.</p>
+<p>9.3. Cuando el Comercio sea contribuyente de ITBMS, el monto correspondiente a dicho impuesto le será incluido en su Liquidación junto con el monto de la venta, siendo responsabilidad exclusiva del Comercio declararlo y reportarlo ante la Dirección General de Ingresos (DGI). Este desglose se reflejará en el reporte de Liquidación enviado por correo electrónico conforme a la cláusula 9.7.</p>
+<p>9.4. Órdenes no retiradas. Las Órdenes que el Cliente no retire dentro de la Ventana de Retiro (&quot;missed&quot;) generarán el pago correspondiente a favor del Comercio en igual medida que una Orden completada, siempre que el Comercio haya cumplido con su obligación de tener la Orden disponible durante la Ventana de Retiro.</p>
+<p>9.5. Medio de pago. El medio de pago disponible en la Aplicación es Yappy, cuyas transacciones, una vez confirmadas por el proveedor, son finales e irreversibles y no están sujetas a contracargos (chargebacks).</p>
+<p>9.6. Liquidación semanal. Pikop liquidará al Comercio, una vez por semana, el monto que le corresponda por las Órdenes elegibles del período, mediante transferencia ACH a la cuenta bancaria panameña registrada por el Comercio.</p>
+<p>9.7. Reporte de liquidación. Junto con cada Liquidación, Pikop enviará al Comercio, por correo electrónico, un reporte con el desglose de las Órdenes incluidas en el período, indicando fecha, número de orden, monto total, y Comisión retenida.</p>
+<p>9.8. Objeción a la Liquidación. El Comercio contará con un plazo de 25 (veinticinco) días naturales, contados desde el envío del reporte de Liquidación, para presentar cualquier objeción u observación sobre el mismo. Transcurrido dicho plazo sin objeción, la Liquidación se entenderá aceptada, sin derecho a reclamo posterior.</p>
+<h2>DÉCIMO: RECUPERACIÓN DE SALDO Y PENALIZACIONES</h2>
+<p>10.1. Recuperación de Saldo (&quot;Clawback&quot;). Cuando una Orden ya liquidada al Comercio resulte posteriormente reembolsada por Culpa del Comercio, Pikop descontará el monto correspondiente de la siguiente Liquidación del Comercio, hasta su completa recuperación.</p>
+<p>10.2. Saldos no recuperados. En caso de que un saldo pendiente de Recuperación no pueda ser compensado en su totalidad contra Liquidaciones futuras dentro de un plazo razonable (por ejemplo, por cese de actividad del Comercio en el Portal), Pikop podrá facturar dicho saldo directamente al Comercio, quien se obliga a cancelarlo dentro de los 30 (treinta) días siguientes a la fecha de dicha factura.</p>
+<p>10.3. Penalización por cancelación excesiva. Pikop llevará un conteo semanal de las cancelaciones atribuibles al Comercio, el cual se reinicia cada lunes. A partir de la séptima (7ma) cancelación dentro de una misma semana, cada cancelación adicional generará una penalización, conforme a los montos establecidos en el Anexo I de estos Términos.</p>
+<p>10.4. Por cada penalización aplicada, Pikop emitirá al Comercio la factura correspondiente, a través de su proveedor de facturación electrónica autorizado por la DGI.</p>
+<p>10.5. Revisión de penalizaciones. Las penalizaciones previstas en la cláusula 10.3 se calculan mediante reglas automatizadas. El Comercio podrá solicitar la revisión de cualquier penalización aplicada, e impugnar su procedencia o su monto, escribiendo a contacto@pikop.app dentro de los 25 (veinticinco) días naturales siguientes a la emisión de la factura correspondiente, en el mismo plazo previsto en la cláusula 9.8 para objetar una Liquidación. Dicha solicitud será atendida por personal de Pikop mediante una valoración individualizada del caso; cuando la revisión resulte favorable al Comercio, Pikop dejará sin efecto la penalización y emitirá la nota de crédito correspondiente.</p>
+<h2>DÉCIMO PRIMERO: CONFIDENCIALIDAD</h2>
+<p>11.1. Las Partes se obligan a no revelar a terceros información comercial o de cualquier otra naturaleza a la que tengan acceso en virtud del presente Acuerdo, salvo autorización expresa de la otra Parte o requerimiento de autoridad competente.</p>
+<p>11.2. Pikop podrá compartir información confidencial del Comercio, sobre esta misma base de confidencialidad, con sus propios asesores, auditores, financistas, y terceros que realicen labores de debida diligencia sobre el negocio de Pikop.</p>
+<p>11.3. El Comercio reconoce que, en el marco de la prestación del servicio, Pikop podrá compartir con éste cierta información del Cliente (nombre y número de teléfono) necesaria para coordinar el retiro de la Orden. El Comercio se compromete a utilizar dicha información exclusivamente para dicho fin, y no podrá contactar al Cliente por fuera de la Aplicación con el propósito de ofrecerle productos o servicios evadiendo la Comisión de Pikop.</p>
+<p>11.4. El Comercio se compromete a no divulgar a ningún tercero cualquier información personal del Cliente que llegue a conocer en el marco del uso del Portal, y a utilizar dicha información exclusivamente dentro de la Aplicación, para los fines aquí establecidos.</p>
+<p>11.5. El incumplimiento de esta cláusula se considerará un incumplimiento grave del presente Acuerdo, y podrá dar lugar a la suspensión inmediata de la cuenta del Comercio y/o a la terminación del Acuerdo por causa atribuible al Comercio, sin perjuicio de las acciones legales que correspondan.</p>
+<p>11.6. El Comercio no podrá vender ni rentar la información del Cliente que reciba a través del Portal, ni combinarla o fusionarla con cualquier otra base de datos o información en su poder.</p>
+<p>11.7. Notificación de incidentes de seguridad. Si el Comercio detecta, o tiene motivos razonables para sospechar, un acceso no autorizado, pérdida, divulgación o uso indebido de información personal de Clientes recibida a través del Portal, deberá notificarlo a Pikop sin dilación indebida y, en todo caso, dentro de las 48 (cuarenta y ocho) horas siguientes a su detección, indicando la naturaleza del incidente, los datos afectados y las medidas adoptadas. Esta notificación es necesaria para que Pikop pueda cumplir con sus propias obligaciones de notificación ante la Autoridad Nacional de Transparencia y Acceso a la Información (ANTAI) y ante los titulares afectados, conforme al artículo 27 del Decreto Ejecutivo 285 de 2021.</p>
+<h2>DÉCIMO SEGUNDO: PROPIEDAD INTELECTUAL</h2>
+<p>12.1. El Comercio declara y garantiza ser titular de los derechos de propiedad intelectual sobre su nombre comercial, logotipo, imágenes y demás material que suministre a Pikop, y otorga a Pikop una licencia no exclusiva, gratuita y revocable para exhibir dicho material dentro del Portal y en materiales de marketing de Pikop, con el único fin de promocionar al Comercio dentro de la plataforma.</p>
+<p>12.2. El Comercio reconoce la titularidad de Pikop sobre la marca &quot;Pikop&quot;, el Portal, y demás propiedad intelectual de Pikop, y se abstendrá de impugnar, cuestionar o utilizar dicha propiedad intelectual fuera de lo expresamente autorizado en estos Términos.</p>
+<p>12.3. Cualquier material físico o digital que Pikop proporcione al Comercio (incluyendo, sin limitar, calcomanías, señalización, o material promocional identificando al Comercio como afiliado de Pikop) permanecerá en todo momento como propiedad exclusiva de Pikop. El Comercio deberá cesar todo uso de dicho material al terminar el Acuerdo, y retirarlo o cubrirlo en la medida en que sea razonablemente posible; en el caso de material que no pueda retirarse físicamente sin daño (como calcomanías ya adheridas), bastará con que el Comercio deje de invocarse como afiliado de Pikop frente al público.</p>
+<p>12.4. Las Partes acuerdan que no desarrollarán tecnología, contenido, ni ningún otro tipo de propiedad intelectual utilizando la propiedad intelectual de la otra Parte, salvo autorización previa, expresa y por escrito de dicha Parte.</p>
+<p>12.5. El Comercio mantendrá indemne a Pikop frente a cualquier reclamo de terceros relacionado con el uso del material suministrado por el Comercio.</p>
+<p>12.6. En caso de que el Comercio opere bajo un modelo de franquicia, declara y garantiza contar con la autorización del franquiciante para que la propiedad intelectual de este sea exhibida dentro del Portal, y se compromete a notificar a Pikop de inmediato en caso de que dicha autorización sea revocada.</p>
+<p>12.7. El Comercio será responsable, a su propio costo, de mantener vigente el registro de su propiedad intelectual y renovarlo a su vencimiento. En caso de que dicho registro venza o no pueda renovarse, el Comercio deberá notificar a Pikop de inmediato para suspender su uso dentro del Portal. Cualquier costo que dicha suspensión genere a Pikop será asumido por el Comercio.</p>
+<h2>DÉCIMO TERCERO: RESPONSABILIDAD E INDEMNIDAD</h2>
+<p>13.1. El Comercio es el único responsable, frente al Cliente y frente a cualquier autoridad, por:</p>
+<ul>
+<li>La calidad, inocuidad, composición y condiciones de higiene y seguridad alimentaria de los productos ofrecidos a través del Portal.</li>
+<li>Contar con todos los permisos, licencias y autorizaciones vigentes exigidos por las autoridades sanitarias y demás entidades regulatorias aplicables.</li>
+<li>La exactitud de la información publicada sobre cada Caja, incluyendo precio, cantidad y etiquetas dietéticas.</li>
+<li>El cumplimiento de la Ventana de Retiro y la disponibilidad del establecimiento durante la misma.</li>
+<li>Cualquier reclamo de un Cliente relacionado con la calidad o condición de los productos.</li>
+<li>Cualquier reclamo de un Cliente relacionado con la cantidad, el precio, o la publicidad de los productos.</li>
+</ul>
+<p>13.2. El Cliente reconoce, al utilizar la Aplicación, que las Cajas contienen comida excedente o próxima a vencer, ofrecida a precio reducido en razón de dicha condición.</p>
+<p>13.3. Pikop no será responsable por los comentarios o calificaciones que los Clientes realicen respecto del Comercio dentro del Portal, ni por daños que el Comercio pudiera atribuir a dichos comentarios.</p>
+<p>13.4. Pikop no será responsable por caídas o interrupciones del Portal debidas a fallas técnicas, de Internet, o circunstancias ajenas a su control, procurando restablecer el servicio con la mayor celeridad posible. En la máxima medida permitida por la ley aplicable, en ningún caso Pikop será responsable frente al Comercio por pérdida de ganancias del negocio, lucro cesante, o daños indirectos, incidentales o consecuenciales de cualquier naturaleza derivados de dichas interrupciones, incluyendo la imposibilidad de vender Cajas durante dicho período.</p>
+<p>13.5. El Portal se ofrece &quot;tal cual&quot; (&quot;as is&quot;), sin garantías de ningún tipo, expresas o implícitas, salvo las expresamente indicadas en estos Términos. Esta exención de garantías aplica en la máxima medida permitida por la ley aplicable y no excluye la responsabilidad de Pikop en los supuestos previstos en la cláusula 13.6.</p>
+<p>13.6. Ninguna disposición de esta cláusula limita ni excluye la responsabilidad de una Parte por muerte, lesiones personales, fraude, declaraciones fraudulentas, o negligencia grave o dolo.</p>
+<p>13.7. El Comercio se compromete a mantener indemne a Pikop frente a cualquier daño, reclamo, demanda o sanción derivada del incumplimiento de las obligaciones establecidas en esta cláusula. Ante cualquier reclamo de un tercero sujeto a esta indemnidad, el Comercio deberá ser notificado oportunamente por Pikop, y asumirá la defensa del reclamo con abogado de su elección; Pikop no llegará a ningún acuerdo relacionado con dicho reclamo sin el consentimiento previo del Comercio, y el Comercio cooperará razonablemente con Pikop en dicha defensa.</p>
+<p>13.8. Tope de responsabilidad. En la máxima medida permitida por la ley aplicable, la responsabilidad total de Pikop frente al Comercio, por cualquier causa y bajo cualquier teoría de responsabilidad, no excederá el monto total de las Comisiones efectivamente retenidas por Pikop sobre las Órdenes de dicho Comercio durante los 12 (doce) meses anteriores al hecho que originó el reclamo. Lo anterior no aplica a los supuestos excluidos en la cláusula 13.6.</p>
+<h2>DÉCIMO CUARTO: CONTROL DE LA PLATAFORMA</h2>
+<p>14.1. Pikop mantiene el control total y discrecional sobre la disponibilidad, el orden, la frecuencia, y la forma en que el Comercio y sus Cajas se presentan a los Clientes dentro del Portal, incluyendo los resultados de búsqueda y la clasificación por categoría.</p>
+<p>14.2. El Comercio no tendrá derecho a compensación ni reclamo alguno por la forma, posición, o visibilidad con la que sea presentado dentro del Portal.</p>
+<p>14.3. El Portal constituye un entorno de mercado en el que el Comercio, sus productos, y sus Cajas pueden mostrarse junto a, al lado de, o en comparación con otros comercios competidores del Comercio. Ninguna disposición de este Acuerdo impide a Pikop presentar al Comercio junto con sus competidores dentro del Portal.</p>
+<p>14.4. Pikop tiene control exclusivo sobre la incorporación, eliminación, o modificación de cualquier característica o funcionalidad del Portal, incluyendo la visibilidad o disponibilidad del Comercio frente a los Clientes, con el fin de optimizar la confiabilidad, eficiencia, o experiencia del Portal.</p>
+<h2>DÉCIMO QUINTO: PLAZO Y TERMINACIÓN</h2>
+<p>15.1. El presente Acuerdo tendrá vigencia por plazo indeterminado desde la aceptación de estos Términos por el Comercio. Cualquiera de las Partes podrá terminar el Acuerdo en cualquier momento, sin causal y sin lugar a multa o penalidad de ninguna naturaleza, mediante notificación a la otra Parte con al menos 15 (quince) días naturales de antelación.</p>
+<p>15.2. Pikop podrá suspender o terminar el Acuerdo de forma inmediata, sin necesidad de preaviso, en caso de fraude, incumplimiento grave, o violación a la cláusula Décimo Primera (Confidencialidad) por parte del Comercio.</p>
+<p>15.3. La terminación del Acuerdo no afectará el derecho de Pikop a recuperar cualquier saldo pendiente que el Comercio le adeude a la fecha de terminación.</p>
+<p>15.4. Pikop también podrá suspender o terminar el acceso del Comercio al Portal cuando: (a) sea necesario para cumplir con un requerimiento legal o una orden judicial; (b) Pikop tenga motivos razonables para creer que la conducta del Comercio causa daño o responsabilidad a Pikop, a un Cliente, o a un tercero, incluyendo intentos de acceso no autorizado, phishing, acoso, envío de contenido no solicitado, o el uso indebido de contenido ajeno; o (c) el Comercio permanezca inactivo en el Portal durante un período prolongado.</p>
+<p>15.5. Si el Comercio considera que su cuenta fue suspendida o terminada por error, podrá contactar a Pikop conforme a la cláusula Décimo Novena, para que Pikop revise dicha determinación.</p>
+<p>15.6. Pikop podrá suspender o rescindir este Acuerdo, sin necesidad de preaviso, en caso de sospecha fundada o de comprobar que alguna declaración realizada por el Comercio en estos Términos, o en los documentos relacionados a los mismos, no es veraz o precisa, sin que ello genere a favor del Comercio derecho a compensación o indemnización alguna.</p>
+<p>15.7. La terminación de este Acuerdo no liberará a ninguna de las Partes de las obligaciones asumidas con anterioridad a la fecha de terminación, las cuales deberán cumplirse en su totalidad.</p>
+<p>15.8. Discontinuación del servicio. Pikop podrá, en cualquier momento, discontinuar total o parcialmente el Portal, notificando al Comercio con al menos 15 (quince) días naturales de antelación. En tal caso, Pikop liquidará al Comercio todo monto pendiente por Órdenes ya completadas, y el Comercio deberá cancelar cualquier Recuperación de Saldo pendiente conforme a la cláusula Décima. Salvo por lo anterior, la discontinuación del servicio no generará a favor del Comercio derecho a indemnización o compensación de ninguna naturaleza.</p>
+<h2>DÉCIMO SEXTO: NATURALEZA DE LA RELACIÓN</h2>
+<p>16.1. La relación entre Pikop y el Comercio es estrictamente comercial e independiente. Nada de lo establecido en estos Términos podrá interpretarse como constitutivo de una relación laboral, de sociedad, agencia, o representación entre las Partes. Cada Parte es exclusivamente responsable de sus propias obligaciones tributarias, laborales y regulatorias.</p>
+<h2>DÉCIMO SÉPTIMO: MODIFICACIONES</h2>
+<p>17.1. Pikop podrá modificar estos Términos en cualquier momento, notificando al Comercio con al menos 15 (quince) días naturales de antelación a su entrada en vigor. El Comercio que no esté de acuerdo con la modificación podrá terminar el Acuerdo antes de la entrada en vigencia de la misma. La falta de objeción dentro de dicho plazo se entenderá como aceptación de los nuevos términos.</p>
+<p>17.2. El plazo de antelación anterior no aplicará a cambios no materiales, ni a cambios que Pikop deba implementar de forma inmediata por razones ajenas a su control, como un cambio en la legislación aplicable.</p>
+<p>17.3. Los cambios a estos Términos no aplicarán de forma retroactiva al uso que el Comercio haya hecho del Portal antes de su entrada en vigencia, pero aplicarán de inmediato a cualquier uso posterior a su publicación.</p>
+<h2>DÉCIMO OCTAVO: LEY APLICABLE Y JURISDICCIÓN</h2>
+<p>18.1. Este Acuerdo se rige por las leyes de la República de Panamá. Cualquier controversia derivada de su interpretación o cumplimiento será sometida a los Tribunales Ordinarios de la Ciudad de Panamá, con renuncia expresa a cualquier otro fuero.</p>
+<h2>DÉCIMO NOVENO: DOMICILIOS Y NOTIFICACIONES</h2>
+<p>19.1. Las Partes acuerdan el correo electrónico como medio idóneo de notificación. A Pikop: contacto@pikop.app. Al Comercio: el correo electrónico registrado en la Aplicación.</p>
+<p>19.2. El Comercio autoriza a Pikop a enviarle llamadas, mensajes de texto (SMS), y notificaciones automatizadas relacionadas con su cuenta, Órdenes, Liquidaciones, y el funcionamiento del Portal.</p>
+<h2>VIGÉSIMO: CESIÓN</h2>
+<p>20.1. Pikop podrá ceder este Acuerdo, así como los créditos a su favor derivados del mismo, a un tercero, en cualquier momento, mediante notificación al Comercio. El Comercio manifiesta en este acto su aceptación anticipada a dicha cesión.</p>
+<p>20.2. El Comercio no podrá ceder, transferir, o delegar este Acuerdo ni los derechos u obligaciones derivados del mismo, sin el consentimiento previo y por escrito de Pikop.</p>
+<h2>VIGÉSIMO PRIMERO: NULIDAD PARCIAL</h2>
+<p>21.1. Si cualquier disposición de este Acuerdo fuera declarada inválida, ilegal o inaplicable por autoridad competente, las demás disposiciones permanecerán vigentes y plenamente aplicables.</p>
+<h2>VIGÉSIMO SEGUNDO: INACCIÓN</h2>
+<p>22.1. La falta de ejercicio, en alguna oportunidad, de cualquier derecho derivado de este Acuerdo no será interpretada como una renuncia a ejercerlo, ni impedirá su ejercicio posterior.</p>
+<h2>VIGÉSIMO TERCERO: NO PUBLICIDAD</h2>
+<p>23.1. Salvo por lo previsto en la cláusula Décimo Segunda (Propiedad Intelectual), ninguna Parte podrá emitir un comunicado de prensa formal, ni realizar declaraciones públicas que caractericen la relación entre las Partes de forma distinta a lo aquí establecido, sin el consentimiento previo y por escrito de la otra Parte. Esta cláusula no restringe el uso que Pikop haga del nombre y logotipo del Comercio para fines de marketing y promoción dentro del Portal o en redes sociales, conforme a la licencia ya otorgada en la cláusula Décimo Segunda.</p>
+<h2>VIGÉSIMO CUARTO: SUPERVIVENCIA</h2>
+<p>24.1. La terminación o vencimiento de este Acuerdo no afectará la vigencia de las siguientes cláusulas, las cuales continuarán aplicando conforme a sus propios términos: Décimo (Recuperación de Saldo y Penalizaciones), Décimo Primero (Confidencialidad), Décimo Segundo (Propiedad Intelectual), Décimo Tercero (Responsabilidad e Indemnidad), y Décimo Octavo (Ley Aplicable y Jurisdicción).</p>
+<h2>VIGÉSIMO QUINTO: FUERZA MAYOR</h2>
+<p>25.1. Ninguna de las Partes será responsable por cualquier retraso o incumplimiento de sus obligaciones bajo este Acuerdo, en la medida en que dicho retraso o incumplimiento sea ocasionado por circunstancias fuera de su control razonable, incluyendo, sin limitar, decretos o prohibiciones gubernamentales, actos de fuerza mayor, huelgas u otras disputas laborales, o desastres naturales.</p>
+<h2>VIGÉSIMO SEXTO: ANTICORRUPCIÓN</h2>
+<p>26.1. Las Partes declaran dar cumplimiento a la legislación panameña aplicable en materia de prevención de blanqueo de capitales y anticorrupción. Ninguna de las Partes podrá, directa o indirectamente, ofrecer, prometer, otorgar, o autorizar pagos o cualquier objeto de valor a un tercero, incluyendo funcionarios públicos, con el propósito de obtener una ventaja indebida en relación con este Acuerdo.</p>
+<p>26.2. El incumplimiento de esta cláusula por cualquiera de las Partes dará derecho a la otra a terminar este Acuerdo de forma inmediata.</p>
+<p>26.3. El Comercio declara que sus recursos son de procedencia lícita, y se compromete a cumplir con la normativa panameña en materia de prevención de blanqueo de capitales. El Comercio mantendrá indemne a Pikop frente a cualquier incumplimiento de esta declaración.</p>
+<h2>VIGÉSIMO SÉPTIMO: ACUERDO ÚNICO Y COMPLETO</h2>
+<p>27.1. Este Acuerdo constituye el entendimiento único y completo entre las Partes respecto de su objeto, y deja sin efecto cualquier acuerdo, adendum, o entendimiento anterior, verbal o escrito, entre las Partes sobre la misma materia.</p>
+<h2>VIGÉSIMO OCTAVO: IDIOMA</h2>
+<p>28.1. Estos Términos podrán estar disponibles en español e inglés. En caso de cualquier discrepancia o conflicto entre ambas versiones, prevalecerá la versión en español.</p>
+<h2>VIGÉSIMO NOVENO: VALIDEZ DE FIRMA ELECTRÓNICA</h2>
+<p>29.1. La aceptación de estos Términos por medios electrónicos, incluyendo la aceptación dentro de la Aplicación, tendrá la misma validez y efecto legal que una firma autógrafa. El Comercio acepta que una versión impresa de estos Términos, y de cualquier comunicación enviada o recibida en forma electrónica, será admisible como medio probatorio en cualquier procedimiento judicial o administrativo.</p>
+<p>29.2. Acceso y conservación de estos Términos. Estos Términos están redactados en español, en lenguaje claro y comprensible, y se encuentran disponibles de forma permanente y gratuita dentro de la Aplicación y en el sitio web de Pikop, de modo que el Comercio pueda consultarlos, descargarlos, almacenarlos y reproducirlos íntegramente en cualquier momento. Pikop conserva registro de la versión de estos Términos aceptada por cada Comercio, así como de la fecha y hora de la aceptación y de la cuenta desde la cual se realizó, con el fin de poder acreditarla ante el propio Comercio o ante cualquier autoridad competente. El Comercio podrá solicitar una copia de la versión vigente al momento de su aceptación escribiendo a contacto@pikop.app.</p>
+<h2>TRIGÉSIMO: DECLARACIONES MUTUAS</h2>
+<p>30.1. Ambas Partes declaran y garantizan que: (a) quien suscribe o acepta este Acuerdo en su representación cuenta con las facultades suficientes para hacerlo; y (b) se encuentran debidamente constituidas y existen válidamente conforme a la legislación de la jurisdicción en la que fueron constituidas.</p>
+<h2>TRIGÉSIMO PRIMERO: ANALÍTICAS Y ESTADÍSTICAS DEL COMERCIO</h2>
+<p>31.1. Pikop pone a disposición del Comercio, dentro de la Aplicación, estadísticas e indicadores sobre su desempeño (por ejemplo, ingresos y cantidad de Cajas). La metodología de cálculo de estos indicadores puede variar según el estado de cada Orden y su resultado (por ejemplo, si fue objeto de un reembolso), conforme se explica en los recursos de ayuda disponibles dentro de la Aplicación.</p>
+<h2>ANEXO I: TABLA DE PENALIZACIONES POR CANCELACIÓN EXCESIVA</h2>
+<p>Aplicable a partir de la séptima (7ma) cancelación atribuible al Comercio dentro de una misma semana (el conteo se reinicia cada lunes). El monto de la penalización depende de la cantidad de cajas en la Orden cancelada y del medio de pago utilizado por el Cliente.</p>
+<p>Origen de los montos. Las penalizaciones no constituyen una fuente de ingreso para Pikop, sino la recuperación del costo real que Pikop absorbe cuando una Orden ya pagada debe ser cancelada y reembolsada: el costo de procesamiento de la transacción original y el de su reverso, calculados sobre el precio máximo de una Caja en la plataforma (B/.6.50). Su finalidad es proteger a Pikop y a los Clientes frente al uso abusivo de la función de cancelación, y por ello solo se aplican a partir de la séptima cancelación semanal, quedando las seis primeras sin penalización alguna.</p>
+<p>Medios de pago aplicables. Los montos de esta tabla corresponden al único medio de pago habilitado en la Aplicación, que es Yappy. Si Pikop habilita en el futuro otro medio de pago, los montos aplicables podrán variar conforme al costo de procesamiento del proveedor correspondiente, y serán notificados al Comercio conforme a la cláusula Décimo Séptima antes de su entrada en vigor.</p>
+<div class="table-scroll"><table>
+<tr><th>Cantidad de cajas en la orden cancelada</th><th>Monto de la penalización</th></tr>
+<tr><td>1</td><td>$0.07</td></tr>
+<tr><td>2</td><td>$0.14</td></tr>
+<tr><td>3</td><td>$0.21</td></tr>
+<tr><td>4</td><td>$0.28</td></tr>
+<tr><td>5</td><td>$0.35</td></tr>
+<tr><td>6</td><td>$0.42</td></tr>
+<tr><td>7</td><td>$0.49</td></tr>
+<tr><td>8</td><td>$0.56</td></tr>
+<tr><td>9</td><td>$0.63</td></tr>
+<tr><td>10 o más</td><td>$0.70</td></tr>
+</table></div>
+</article>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <img class="footer-logo" src="brand_assets/pikop_logo_white_crop.png" alt="Pikop" loading="lazy" />
+        <p class="footer-tagline">Come bien. Paga poco. Descarga la app y encuentra cajas disponibles cerca de ti.</p>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Navegación</p>
+        <ul>
+          <li><a href="/#como-funciona">Cómo funciona</a></li>
+          <li><a href="/#para-negocios">Para negocios</a></li>
+          <li><a href="/#sobre-nosotros">Sobre nosotros</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Contáctanos</p>
+        <p style="font-size:0.88rem;color:rgba(255,255,255,0.55);">contacto@pikop.app</p>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Legal</p>
+        <ul>
+          <li><a href="/terminos">Términos y Condiciones — Clientes</a></li>
+          <li><a href="/terminos-comercios">Términos y Condiciones — Comercios</a></li>
+          <li><a href="/privacidad">Política de Privacidad</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Pikop. Todos los derechos reservados. Ciudad de Panamá, Panamá.</span>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  // Navbar scroll shadow
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobile-nav');
+  hamburger.addEventListener('click', () => {
+    const open = mobileNav.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', open);
+  });
+
+  // Close mobile nav on link click
+  mobileNav.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      mobileNav.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
+
+</body>
+</html>
