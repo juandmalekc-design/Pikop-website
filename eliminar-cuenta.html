@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eliminar tu cuenta | Pikop</title>
+  <meta name="description" content="Cómo eliminar tu cuenta de Pikop y qué datos se borran o se conservan." />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── TOKENS (matches index.html) ───────────────── */
+    :root {
+      --orange:      #F06000;
+      --orange-dk:   #C84E00;
+      --orange-lt:   rgba(240,96,0,0.12);
+      --teal:        #00B4B4;
+      --dark:        #1A1A1A;
+      --cream:       #FFF8F0;
+      --cream-lt:    #F5EFE6;
+      --white:       #FFFFFF;
+      --body:        #555555;
+      --font-head:   'Plus Jakarta Sans', sans-serif;
+      --font-body:   'Inter', sans-serif;
+    }
+
+    /* ─── RESET ──────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--white); color: var(--dark); overflow-x: hidden; }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ─── NAV (copied from index.html) ──────────────── */
+    #navbar {
+      position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-index: 100;
+      background: rgba(255,255,255,0.97);
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.08);
+      box-shadow: 0 2px 24px rgba(0,0,0,0.10);
+      transition: box-shadow 0.25s ease, backdrop-filter 0.25s ease;
+      white-space: nowrap;
+    }
+    #navbar.scrolled {
+      box-shadow: 0 4px 32px rgba(0,0,0,0.14);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: rgba(255,255,255,0.88);
+    }
+    .nav-inner {
+      padding: 0 20px 0 8px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #eb5d00;
+      border-radius: 999px;
+      padding: 6px 14px;
+    }
+    .nav-logo img { height: 34px; width: auto; object-fit: contain; display: block; }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: var(--font-head);
+      font-weight: 600;
+      font-size: 0.92rem;
+      color: var(--dark);
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--orange); }
+    .nav-links a:focus-visible { outline: 2px solid var(--orange); border-radius: 4px; }
+    .nav-cta {
+      font-family: var(--font-head);
+      font-weight: 600;
+      font-size: 0.92rem;
+      background: none;
+      color: var(--dark);
+      padding: 0;
+      border-radius: 0;
+      box-shadow: none;
+      transition: color 0.15s;
+    }
+    #navbar .nav-cta:hover { background: none; color: var(--orange); transform: none; }
+    #navbar .nav-cta:active { transform: none; }
+    #navbar .nav-cta:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; border-radius: 4px; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--dark);
+      border-radius: 2px;
+      transition: transform 0.25s, opacity 0.25s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 68px; left: 0; right: 0;
+      background: #fff;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      padding: 1.5rem 1.5rem 2rem;
+      flex-direction: column;
+      gap: 1.25rem;
+      z-index: 99;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--dark);
+    }
+    .mobile-nav .nav-cta { text-align: center; }
+
+    /* ─── PAGE LAYOUT ─────────────────────────────────── */
+    .legal-main {
+      padding: 140px 24px 100px;
+    }
+    .legal-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .legal-doc .eyebrow {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--orange);
+      display: block;
+      margin-bottom: 0.9rem;
+    }
+    .legal-doc h1 {
+      font-family: var(--font-head);
+      font-size: clamp(28px, 5vw, 38px);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      color: var(--dark);
+      margin-bottom: 1.75rem;
+      padding-bottom: 1.75rem;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+    .legal-doc h2 {
+      font-family: var(--font-head);
+      font-size: clamp(19px, 2.6vw, 22px);
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+      color: var(--dark);
+      margin-top: 2.5rem;
+      margin-bottom: 0.9rem;
+    }
+    .legal-doc h3 {
+      font-family: var(--font-head);
+      font-size: clamp(16px, 2.2vw, 18px);
+      font-weight: 700;
+      line-height: 1.4;
+      color: var(--dark);
+      margin-top: 1.75rem;
+      margin-bottom: 0.6rem;
+    }
+    .legal-doc p {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--body);
+      margin-bottom: 1.1rem;
+    }
+    .legal-doc ul, .legal-doc ol {
+      margin-bottom: 1.1rem;
+      padding-left: 1.4rem;
+    }
+    .legal-doc li {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--body);
+      margin-bottom: 0.5rem;
+    }
+    .legal-doc strong { color: var(--dark); font-weight: 700; }
+    .legal-doc a { color: var(--orange); text-decoration: underline; text-underline-offset: 2px; transition: color 0.15s; }
+    .legal-doc a:hover { color: var(--orange-dk); }
+    .legal-doc a:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; border-radius: 2px; }
+
+    .callout {
+      background: var(--cream-lt);
+      border-left: 4px solid var(--orange);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 20px rgba(240,96,0,0.08);
+    }
+    .callout p { margin-bottom: 0; color: var(--dark); }
+
+    /* ─── FOOTER (copied from index.html) ───────────── */
+    footer {
+      background: var(--dark);
+      border-top: 2px solid var(--orange);
+      padding: 3.5rem 24px 1.5rem;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 2.5rem;
+    }
+    .footer-logo { height: 58px; width: auto; object-fit: contain; display: block; margin-bottom: 0.75rem; }
+    .footer-tagline { font-size: 0.88rem; line-height: 1.7; color: rgba(255,255,255,0.45); max-width: 200px; }
+    .footer-col-title {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 1rem;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-col a {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.55);
+      transition: color 0.15s;
+    }
+    .footer-col a:hover { color: #fff; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding-top: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-copy { font-size: 0.82rem; color: rgba(255,255,255,0.25); }
+
+    /* ─── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 768px) {
+      #navbar { top: 0; left: 0; right: 0; transform: none; border-radius: 0; border-left: none; border-right: none; border-top: none; border-bottom: 1px solid rgba(0,0,0,0.07); box-shadow: none; }
+      .nav-inner { padding: 0 24px; justify-content: space-between; height: 64px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .legal-main { padding: 100px 20px 72px; }
+      .legal-doc h1 { margin-bottom: 1.5rem; padding-bottom: 1.25rem; }
+    }
+    @media (max-width: 480px) {
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─── PRINT ──────────────────────────────────────── */
+    @media print {
+      #navbar, .mobile-nav, footer { display: none !important; }
+      .legal-main { padding: 0; }
+      .legal-container { max-width: 100%; }
+      body { background: #fff; }
+    }
+  </style>
+</head>
+<body>
+
+<header id="navbar">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo" aria-label="Pikop inicio">
+      <img src="brand_assets/pikop_logo_no_bg.png" alt="Pikop" />
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="/#como-funciona">Cómo funciona</a></li>
+      <li><a href="/#para-negocios">Para negocios</a></li>
+      <li><a href="/#sobre-nosotros">Sobre nosotros</a></li>
+    </ul>
+    <a href="/#download" class="nav-cta">Descargar App</a>
+    <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<nav class="mobile-nav" id="mobile-nav" aria-label="Menú móvil">
+  <a href="/#como-funciona">Cómo funciona</a>
+  <a href="/#para-negocios">Para negocios</a>
+  <a href="/#sobre-nosotros">Sobre nosotros</a>
+  <a href="/#download" class="nav-cta">Descargar App</a>
+</nav>
+
+<main class="legal-main">
+  <div class="legal-container">
+    <article class="legal-doc">
+      <span class="eyebrow">Soporte</span>
+      <h1>Eliminar tu cuenta de Pikop</h1>
+
+      <p>Esta página explica cómo eliminar tu cuenta de la app Pikop (desarrollada por Pikop) y qué pasa con tus datos. Puedes hacerlo desde la app o, si ya no la tienes instalada, escribiéndonos por correo.</p>
+
+      <h2>Opción 1: Desde la app</h2>
+      <ol>
+        <li>Abre Pikop e inicia sesión.</li>
+        <li>Ve a Perfil → Eliminar cuenta.</li>
+        <li>Confirma la eliminación.</li>
+      </ol>
+      <p>Tu cuenta se elimina de inmediato.</p>
+
+      <h2>Opción 2: Sin la app, por correo</h2>
+      <p>Si ya desinstalaste Pikop, escríbenos a <a href="mailto:contacto@pikop.app?subject=Eliminar%20cuenta">contacto@pikop.app</a>:</p>
+      <ul>
+        <li>Envíalo desde el mismo correo con el que te registraste en Pikop.</li>
+        <li>Asunto: Eliminar cuenta</li>
+        <li>Indica si tu cuenta es de cliente o de comercio.</li>
+      </ul>
+      <p>Verificaremos que el correo coincide con tu cuenta y atenderemos tu solicitud dentro de un plazo de diez (10) días hábiles. Te confirmaremos por correo cuando esté lista. Nunca te pediremos tu contraseña.</p>
+
+      <div class="callout">
+        <p><strong>Importante:</strong> La eliminación puede posponerse si existen órdenes activas, solicitudes de reembolso sin resolver, o pagos pendientes entre el usuario y Pikop, hasta que se resuelvan. Si usas la app, ella te indicará qué falta resolver; si nos escribes por correo, te lo diremos en nuestra respuesta.</p>
+      </div>
+
+      <h2>Qué datos se eliminan</h2>
+
+      <h3>Si eres cliente</h3>
+      <p>Se eliminan o anonimizan de forma irreversible:</p>
+      <ul>
+        <li>Tu nombre, correo electrónico y número de teléfono.</li>
+        <li>Tus métodos de pago guardados.</li>
+        <li>El identificador de notificaciones de tu dispositivo.</li>
+        <li>Tu acceso a la cuenta (usuario e inicio de sesión).</li>
+      </ul>
+
+      <h3>Si eres comercio</h3>
+      <p>Se eliminan de inmediato:</p>
+      <ul>
+        <li>Tu acceso a la cuenta y el PIN de modo dueño.</li>
+        <li>El teléfono de contacto, el logo y las imágenes de tu comercio.</li>
+        <li>Tu comercio deja de aparecer en Pikop.</li>
+      </ul>
+
+      <h2>Qué datos conservamos y por cuánto tiempo</h2>
+      <ul>
+        <li>Historial de transacciones: se conserva de forma anonimizada (sin datos que te identifiquen) para fines contables y estadísticos.</li>
+        <li>Fotos de evidencia de disputas o reclamos: hasta 12 meses después de resolverse el reclamo; luego se eliminan automáticamente.</li>
+        <li>Documentos de verificación del comercio (permiso MINSA, aviso de operaciones, cédula del representante, comprobante bancario) y datos bancarios: hasta 5 años después del cierre de la cuenta; luego se eliminan automáticamente.</li>
+        <li>Razón social, RUC, DV y facturas ya emitidas: se conservan por obligación fiscal. Corresponden a la persona jurídica del comercio, no a una persona natural.</li>
+      </ul>
+      <p>Estos plazos pueden extenderse solo si existe una obligación legal de conservación, una auditoría pendiente o una reclamación administrativa o judicial en curso.</p>
+
+      <p>Para más detalles, consulta nuestra <a href="/privacidad">Política de Privacidad</a>. ¿Dudas? Escríbenos a <a href="mailto:contacto@pikop.app">contacto@pikop.app</a>.</p>
+    </article>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <img class="footer-logo" src="brand_assets/pikop_logo_white_crop.png" alt="Pikop" loading="lazy" />
+        <p class="footer-tagline">Come bien. Paga poco. Descarga la app y encuentra cajas disponibles cerca de ti.</p>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Navegación</p>
+        <ul>
+          <li><a href="/#como-funciona">Cómo funciona</a></li>
+          <li><a href="/#para-negocios">Para negocios</a></li>
+          <li><a href="/#sobre-nosotros">Sobre nosotros</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Contáctanos</p>
+        <p style="font-size:0.88rem;color:rgba(255,255,255,0.55);">contacto@pikop.app</p>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Legal</p>
+        <ul>
+          <li><a href="/terminos">Términos y Condiciones — Clientes</a></li>
+          <li><a href="/terminos-comercios">Términos y Condiciones — Comercios</a></li>
+          <li><a href="/privacidad">Política de Privacidad</a></li>
+          <li><a href="/eliminar-cuenta">Eliminar cuenta</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Pikop. Todos los derechos reservados. Ciudad de Panamá, Panamá.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Navbar scroll shadow
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobile-nav');
+  hamburger.addEventListener('click', () => {
+    const open = mobileNav.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', open);
+  });
+
+  // Close mobile nav on link click
+  mobileNav.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      mobileNav.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
+
+</body>
+</html>
